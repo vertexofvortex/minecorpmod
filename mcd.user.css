@@ -16,6 +16,10 @@
 	"Показывать": "default",
 	"Скрывать": "none"
 }
+@var select disableConflicts "Предотвратить конфликтные ситуации на форуме, убрать критику в сторону операторов" {
+	"Не предотвращать": "default",
+	"Предотвратить": "none"
+}
 ==/UserStyle== */
 @-moz-document domain("forum.minecorp.ru") {
 	/* --- tweaks --- */
@@ -29,9 +33,11 @@
 	#brd-navlinks ul li#navextra4 {
 		display: @menuSocials;
 	}
-	.logo {
-		background-repeat: repeat-x;
+	#brd-main,
+	#visit-links{
+		display: @disableConflicts;
 	}
+	
 	body,
 	a,
 	span,
