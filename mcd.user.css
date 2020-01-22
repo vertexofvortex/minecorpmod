@@ -1,0 +1,136 @@
+/* ==UserStyle==
+@name         MineCorp Dark Reloaded
+@namespace    https://github.com/vertexofvortex/vertexofvortex.github.io
+@homepageURL  https://github.com/vertexofvortex/vertexofvortex.github.io
+@version      1.0.0
+@license      Other
+@description  theme is theme
+@author       vertexofvortex
+@preprocessor uso
+
+@var text test "test" default;
+==/UserStyle== */
+@-moz-document domain("forum.minecorp.ru") {
+	body,
+	a,
+	span,
+	h,
+	b,
+	p,
+	div,
+	input {
+	    font-family: 'Open Sans', sans-serif;
+	}
+	/*a:hover {
+		text-decoration: none;
+		border-bottom: 1px solid #00000080;
+		padding-bottom: 0px;
+	}*/
+	.logo:hover {
+		border: none;
+	}
+	/* --- menu bar background restyling --- */
+	#brd-navlinks {
+		box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1);
+	}
+	/* --- announcement board restyling and disabling --- */
+	div#brd-announcement div.content p span a span strong span,
+	div#brd-announcement div.content p span span strong span {
+		background: none !important;
+	}
+
+	#brd-announcement {
+		background: #fbfbfb;
+		border: #cccccc 1px solid;
+		border-radius: 6px;
+		box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1);
+	}
+
+	#brd-announcement {
+		display: "/*[[test]]*/";
+	}
+
+	/* --- main forums restyling --- */
+	.main-head {
+		border-radius: 6px 6px 0 0;
+	}
+	.item-summary {
+		background: #f0f0f0;
+	}
+	.main-category {
+		box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1);
+		border-radius: 0 0 6px 6px;
+	}
+	.main-item {
+		border-top-width: 0px !important;
+	}
+	li.info-topics,
+	li.info-posts,
+	li.info-lastpost,
+	div.item-subject {
+	border: default;
+	}
+	#brd-stats {
+		border-radius: 6px 6px 0 0;
+		box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1);
+	}
+	#brd-online {
+		border-radius: 0 0 6px 6px;
+		box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1);
+		background: #f0f0f0;
+	}
+
+	/* --- f --- */
+	.main-content {
+		box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1);
+	}
+	.main-foot {
+		box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1);
+		border-top: none;
+		border-radius: 0 0 6px 6px;
+	}
+	#brd-qpost {
+		border-radius: 0 0 6px 6px;
+		box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1);
+	}
+	.main-subhead {
+		background: #f0f0f0;
+	}
+	.main-topic {
+		border-top: none;
+	}
+	.post {
+		border-top: 0px;
+	}
+	.post-ident {
+		border-bottom: none !important;
+		background: none !important;
+	}
+	/*.posthead .hn {
+		padding-right: 5px;
+	}
+	.post-num {
+		background: #ededed;
+		height: 18px;
+		width: 18px;
+		text-align: center;
+		border-radius: 50%
+	}*/
+	/* --- useless rss button removal --- */
+	.options span.first-item {
+		display: none;
+	}
+	.brd .postfoot .post-actions span {
+		background: #fefefe;
+		border-radius: 6px;
+	}
+	#topic-review {
+		border-radius: 0 0 6px 6px;
+	}
+	#pun_bbcode_buttons input {
+		background: red;
+	}
+	.fancy_spoiler_switcher {
+		border-radius: 6px;
+	}
+}
