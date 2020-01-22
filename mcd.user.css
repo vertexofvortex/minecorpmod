@@ -6,9 +6,12 @@
 @license      Other
 @description  theme is theme
 @author       vertexofvortex
-@preprocessor uso
+@preprocessor less
 
-@var text test "test" default;
+@var select brdDisplay "Доска объявлений" {
+  "Показывать": "default",
+  "Скрывать": "none"
+}
 ==/UserStyle== */
 @-moz-document domain("forum.minecorp.ru") {
 	body,
@@ -47,7 +50,7 @@
 	}
 
 	#brd-announcement {
-		display: "/*[[test]]*/";
+		display: @brdDisplay;
 	}
 
 	/* --- main forums restyling --- */
