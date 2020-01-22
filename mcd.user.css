@@ -9,11 +9,29 @@
 @preprocessor less
 
 @var select brdDisplay "Доска объявлений" {
-  "Показывать": "default",
-  "Скрывать": "none"
+	"Показывать": "default",
+	"Скрывать": "none"
+}
+@var select menuSocials "Кнопки Discord, ВКонтакте и поддержки в меню" {
+	"Показывать": "default",
+	"Скрывать": "none"
 }
 ==/UserStyle== */
 @-moz-document domain("forum.minecorp.ru") {
+	/* --- tweaks --- */
+	/* announcement board hiding */
+	.announ {
+		display: @brdDisplay;
+	}
+	/* menu-bar social buttons removal */
+	#brd-navlinks ul li#navextra2,
+	#brd-navlinks ul li#navextra3,
+	#brd-navlinks ul li#navextra4 {
+		display: @menuSocials;
+	}
+	.logo {
+		background-repeat: repeat-x;
+	}
 	body,
 	a,
 	span,
@@ -22,7 +40,7 @@
 	p,
 	div,
 	input {
-	    font-family: 'Open Sans', sans-serif;
+	    font-family: default;
 	}
 	/*a:hover {
 		text-decoration: none;
@@ -41,16 +59,11 @@
 	div#brd-announcement div.content p span span strong span {
 		background: none !important;
 	}
-
 	#brd-announcement {
 		background: #fbfbfb;
 		border: #cccccc 1px solid;
 		border-radius: 6px;
 		box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1);
-	}
-
-	#brd-announcement {
-		display: @brdDisplay;
 	}
 
 	/* --- main forums restyling --- */
