@@ -8,66 +8,78 @@
 @author       vertexofvortex
 @preprocessor stylus
 
-@var	select 	brdDisplay 	"Доска объявлений" {
-	"Показывать": "default",
-	"Скрывать": "none"
-}
-@var	select 	menuSocials "Кнопки Discord, ВКонтакте и поддержки в меню" {
-	"Показывать": "default",
-	"Скрывать": "none"
-}
-
-
+@var	checkbox 	brdRemove 					"Скрыть доску объявлений" 0
+@var 	checkbox 	brdLinksHighlightRemove		"Убрать разноцветные выделения ссылок на доске объявлений" 0
+@var	checkbox 	menuSocialsRemove 			"Скрыть кнопки Discord, ВКонтакте и поддержки в верхнем меню" 0
+@var 	checkbox	fullwidthAvatars			"Сделать аватары игроков полной ширины" 0
 @var	select 	theme 	"Цветовая тема" {
-  	"Стандартная": "original",
+  	"Стандартная*": "original",
 	"Just Dark": "justdark",
- 	"Midnight Blue*": "nightblue"
+ 	"Midnight Blue": "nightblue"
 }
-@var 	select 	disableConflicts "Предотвратить конфликтные ситуации на форуме, убрать критику в сторону операторов" {
-	"Не предотвращать": "default",
-	"Предотвратить": "none"
+@var 	checkbox 	conflictsRemove "Предотвратить конфликтные ситуации на форуме, убрать критику в сторону операторов" 0
 }
 ==/UserStyle== */
 @-moz-document domain("forum.minecorp.ru") {
 	/* --- tweaks --- */
 	/* announcement board hiding */
-	.announ {
-		display: brdDisplay;
+	if brdRemove {
+		.announ {
+			display: none;
+		}
+	}
+	
+	/* announcement board disable links highlight*/
+	if brdLinksHighlightRemove {
+		div#brd-announcement div.content p span a span strong span,
+		div#brd-announcement div.content p span span strong span {
+			background: none !important;
+		}
 	}
 	
 	/* menu-bar social buttons removal */
-	#brd-navlinks ul li#navextra2,
-	#brd-navlinks ul li#navextra3,
-	#brd-navlinks ul li#navextra4 {
-		display: menuSocials;
+	if menuSocialsRemove {
+		#brd-navlinks ul li#navextra2,
+		#brd-navlinks ul li#navextra3,
+		#brd-navlinks ul li#navextra4 {
+			display: none;
+		}
 	}
-	#brd-main,
-	#visit-links{
-		display: disableConflicts;
+	
+	/* remove conflicts */
+	if conflictsRemove {
+		#brd-main,
+		#visit-links{
+			display: none;
+		}
 	}
+	
+	/* remove rss button */
+	/*if rssRemove {
+		.options span.first-item {
+			display: none;
+		}
+	}*/
+	
+	/* full-width user avatars */
+	if fullwidthAvatars {
+		.author-ident .useravatar img {
+			width: 180px;
+			height: inherit;
+		}
+	}
+
 	/* main style */
 	/* new font */
 	* {
 	    font-family: default;
 	}
-	/*a:hover {
-		text-decoration: none;
-		border-bottom: 1px solid #00000080;
-		padding-bottom: 0px;
-	}
-	.logo:hover {
-		border: none;
-	}*/
 	
 	/* --- menu bar shadow --- */
 	#brd-navlinks {
 		box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1);
 	}
 	/* --- announcement board restyling --- */
-	div#brd-announcement div.content p span a span strong span,
-	div#brd-announcement div.content p span span strong span {
-		background: none !important;
-	}
 	#brd-announcement {
 		background: #fbfbfb;
 		border: #cccccc 1px solid;
@@ -120,6 +132,17 @@
 	.paging strong {
 		border-radius: 10px;
 	}
+	.posting a.newpost {
+		border-radius: 20px;
+		padding-left: 12px;
+		padding-right: 12px;
+	}
+	.item-summary {
+		box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1);
+	}
+	.main-content .sticky {
+		background: none;
+	}
 	#brd-qpost {
 		border-radius: 0 0 6px 6px;
 		box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1);
@@ -137,20 +160,13 @@
 		border-bottom: none !important;
 		background: none !important;
 	}
-	/*.posthead .hn {
-		padding-right: 5px;
+	.player-btn {
+		width: 180px;
+		padding: 8px 0px 8px 0px;
+		border-radius: 1px*50%;
 	}
-	.post-num {
-		background: #ededed;
-		height: 18px;
-		width: 18px;
-		text-align: center;
-		border-radius: 50%
-	}*/
+
 	/* --- useless rss button removal --- */
-	.options span.first-item {
-		display: none;
-	}
 	.brd .postfoot .post-actions span {
 		background: #fefefe;
 		border-radius: 6px;
@@ -165,6 +181,12 @@
 		border-radius: 6px;
 	}
 	
+	/* --- color themes --- */
+	if theme == original {
+		.main-head {
+			background: default;
+		}
+	}
 	if theme == justdark {
     	.main-head {
       		background: red;
