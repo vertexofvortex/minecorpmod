@@ -119,7 +119,6 @@
 		box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1);
 		background: #f0f0f0;
 	}
-
 	/* --- in-forum restyling --- */
 	.main-content {
 		box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1);
@@ -148,6 +147,8 @@
 		border-radius: 0 0 6px 6px;
 		box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1);
 	}
+	
+	/* --- in-topic restyling --- */
 	.main-subhead {
 		background: #f0f0f0;
 	}
@@ -166,8 +167,6 @@
 		padding: 8px 0px 8px 0px;
 		border-radius: 1px*50%;
 	}
-
-	/* --- useless rss button removal --- */
 	.brd .postfoot .post-actions span {
 		background: #fefefe;
 		border-radius: 6px;
@@ -180,6 +179,15 @@
 	}
 	.fancy_spoiler_switcher {
 		border-radius: 6px;
+	}
+	#post-form {
+		border-radius: 0 0px 6px 6px;	
+	}
+	.frm-buttons input {
+		border-radius: 1px*50%;
+	}
+	.frm-buttons input span {
+		padding-right: 12px;
 	}
 	
 	/* --- color themes --- */
@@ -225,7 +233,8 @@
 			color: #83d152;
 		}
 		#brd-stats,
- 		#brd-stats * {
+ 		#brd-stats span,
+ 		#brd-stats strong {
 			background: #363636;
 			border-color: #474747;
 			color: #fff;
@@ -246,10 +255,71 @@
 			border-color: #474747;
 			color: #fff;
 		}
+		.main-content .icon {
+			background-image: url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/status.png) !important;
+		}
 	}
 	if theme == nightblue {
-    	.main-head {
-      		background: blue;
+    	body {
+      		background: #101826;
     	}
+		#brd-announcement, 
+		#brd-announcement * {
+			background: #18243a;
+			border-color: #21304d;
+			color: #415f9a !important;
+		}
+		.main-head {
+			background: #415f9a;
+		}
+		.item-summary {
+			background: #293b60;
+			color: #fff;
+		}
+		.main-subhead {
+			border-color: #21304d;
+		}
+		.main-content {
+			background: #18243a;
+			border-color: #21304d;
+		}
+		li.info-topics,
+		li.info-topics strong,
+		li.info-posts,
+		li.info-posts strong,
+		li.info-lastpost,
+		div.item-subject {
+			border-color: #21304d;
+			color: #fff;
+		}
+		.main-content a {
+			color: #5d86d7;
+		}
+		#brd-stats,
+ 		#brd-stats span,
+ 		#brd-stats strong {
+			background: #293b60;
+			border-color: #21304d;
+			color: #fff;
+		}
+		#brd-online,
+ 		#brd-online span {
+			background: #18243a;
+			border-color: #21304d;
+			color: #fff;
+		}
+		li.info-replies,
+		li.info-views {
+			border-color: #21304d;
+		}
+		.main-foot,
+ 		.main-foot * {
+			background: #293b60;
+			border-color: #21304d;
+			color: #fff;
+		}
+		.main-content .icon {
+			background-image: url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/status.png) !important;
+		}
 	}
 }
