@@ -1,12 +1,12 @@
 /* ==UserStyle==
 @name         MineCorp Dark Reloaded
-@namespace    https://github.com/vertexofvortex/MCDreloaded
-@homepageURL  https://github.com/vertexofvortex/MCDreloaded
+@namespace    https://github.com/vertexofvortex/vertexofvortex.github.io
+@homepageURL  https://github.com/vertexofvortex/vertexofvortex.github.io
 @version      1.0.0
 @license      Other
 @description  theme is theme
 @author       vertexofvortex
-@preprocessor less
+@preprocessor stylus
 
 @var	select 	brdDisplay 	"Доска объявлений" {
 	"Показывать": "default",
@@ -16,13 +16,14 @@
 	"Показывать": "default",
 	"Скрывать": "none"
 }
-@var	select 	darkMode 	"dark test" {
-  "Common Dark": "commondark",
-  "Night Blue*": "nightblue"
+
+
+@var	select 	theme 	"Цветовая тема" {
+  	"Стандартная": "original",
+	"Just Dark": "justdark",
+ 	"Midnight Blue*": "nightblue"
 }
-
-
-@var select disableConflicts "Предотвратить конфликтные ситуации на форуме, убрать критику в сторону операторов" {
+@var 	select 	disableConflicts "Предотвратить конфликтные ситуации на форуме, убрать критику в сторону операторов" {
 	"Не предотвращать": "default",
 	"Предотвратить": "none"
 }
@@ -31,18 +32,18 @@
 	/* --- tweaks --- */
 	/* announcement board hiding */
 	.announ {
-		display: @brdDisplay;
+		display: brdDisplay;
 	}
 	
 	/* menu-bar social buttons removal */
 	#brd-navlinks ul li#navextra2,
 	#brd-navlinks ul li#navextra3,
 	#brd-navlinks ul li#navextra4 {
-		display: @menuSocials;
+		display: menuSocials;
 	}
 	#brd-main,
 	#visit-links{
-		display: @disableConflicts;
+		display: disableConflicts;
 	}
 	/* main style */
 	/* new font */
@@ -162,5 +163,16 @@
 	}
 	.fancy_spoiler_switcher {
 		border-radius: 6px;
+	}
+	
+	if theme == justdark {
+    	.main-head {
+      		background: red;
+    	}
+	}
+	if theme == nightblue {
+    	.main-head {
+      		background: blue;
+    	}
 	}
 }
