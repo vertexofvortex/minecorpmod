@@ -8,10 +8,11 @@
 @author       vertexofvortex
 @preprocessor stylus
 
-@var	checkbox 	brdRemove 					"Скрыть доску объявлений" 0
-@var 	checkbox 	brdLinksHighlightRemove		"Убрать разноцветные выделения ссылок на доске объявлений" 0
-@var	checkbox 	menuSocialsRemove 			"Скрыть кнопки Discord, ВКонтакте и поддержки в верхнем меню" 0
-@var 	checkbox	fullwidthAvatars			"Сделать аватары игроков полной ширины" 0
+@var	checkbox 	brdRemove 					"Скрыть доску объявлений"														0
+@var 	checkbox 	brdLinksHighlightRemove		"Убрать разноцветные выделения ссылок на доске объявлений" 						0
+@var	checkbox 	menuSocialsRemove 			"Скрыть кнопки Discord, ВКонтакте и поддержки в верхнем меню" 					0
+@var 	checkbox	fullwidthAvatars			"Сделать аватары игроков полной ширины" 										0
+@var 	checkbox	editorLargerFont			"Увеличить шрифт и интервал между строками в окне редактирования темы/ответа" 	0
 @var	select 	theme 	"Цветовая тема" {
   	"Стандартная*": "original",
 	"Just Dark": "justdark",
@@ -54,13 +55,6 @@
 		}
 	}
 	
-	/* remove rss button */
-	/*if rssRemove {
-		.options span.first-item {
-			display: none;
-		}
-	}*/
-	
 	/* full-width user avatars */
 	if fullwidthAvatars {
 		.author-ident .useravatar img {
@@ -68,7 +62,14 @@
 			height: inherit;
 		}
 	}
-
+	/* larger font in the editor */
+	if editorLargerFont {
+		textarea {
+			font-size: 1.2em !important;
+			line-height: 1.5em !important;
+		}
+	}
+	
 	/* main style */
 	/* new font */
 	* {
@@ -91,7 +92,7 @@
 	.main-head {
 		border-radius: 6px 6px 0 0;
 		border: 0px;
-		box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1);
+		box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1) !important;
 	}
 	.item-summary {
 		background: #f0f0f0;
@@ -162,33 +163,68 @@
 		border-bottom: none !important;
 		background: none !important;
 	}
+	.posthead .hn {
+		background: none;
+		border-bottom: none;
+	}
 	.player-btn {
 		width: 180px;
 		padding: 8px 0px 8px 0px;
 		border-radius: 1px*50%;
+		background: #308c25;
+		border: solid 1px #308c26 !important;
 	}
 	.brd .postfoot .post-actions span {
 		background: #fefefe;
-		border-radius: 6px;
+		border-radius: 1px*50%;
+		padding-left: 10px;
+		padding-right: 10px;
 	}
 	#topic-review {
 		border-radius: 0 0 6px 6px;
 	}
 	#pun_bbcode_buttons input {
-		background: red;
+		border-radius: 1px*50% !important;
 	}
 	.fancy_spoiler_switcher {
-		border-radius: 6px;
+		border-radius: 1px*50%;
 	}
 	#post-form {
 		border-radius: 0 0px 6px 6px;	
 	}
 	.frm-buttons input {
-		border-radius: 1px*50%;
+		border-radius: 1px*50% !important;
+		padding-left: 12px;
+		padding-right: 12px;
 	}
 	.frm-buttons input span {
 		padding-right: 12px;
 	}
+	textarea,
+ 	input[type="text"],
+ 	input:not([title]) {
+		border-radius: 6px;
+		background: #f0f0f0 !important;
+		box-shadow: none!important;
+	}
+	.main-menu {
+		border-radius: 6px 6px 0 0;
+	}
+	#pun_bbcode_bar input[type=button].image,
+ 	#pun_bbcode_bar #pun_bbcode_button_smiles.image
+	#pun_bbcode_bar #pun_bbcode_button_fancy_spoiler.image {
+		background-color: #fefefe;
+	}
+	
+	/* --- user profile --- */
+	ul.data-list li, ul.data-box li,
+ 	ul.data-list li, ul.data-box li {
+		border: none;
+	}
+	.main-content .info-box {
+		background: #f0f0f0
+	}
+	
 	
 	/* --- color themes --- */
 	if theme == original {
@@ -208,6 +244,7 @@
 		}
 		.main-head {
 			background: #639146;
+			box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1) !important;
 		}
 		.item-summary {
 			background: #363636;
