@@ -12,12 +12,19 @@
 @var 	checkbox 	brdLinksHighlightRemove		"Убрать разноцветные выделения ссылок на доске объявлений" 						0
 @var	checkbox 	menuSocialsRemove 			"Скрыть кнопки Discord, ВКонтакте и поддержки в верхнем меню" 					0
 @var 	checkbox	fullwidthAvatars			"Сделать аватары игроков полной ширины" 										0
-@var 	checkbox	editorLargerFont			"Увеличить шрифт в полях ввода (создание темы, ответа)" 	0
-@var	select 	theme 	"Цветовая тема" {
+@var 	checkbox	editorLargerFont			"Увеличить шрифт в полях ввода (создание темы, ответа)" 						0
+@var	select		altLogo						"Логотип MineCorp"																{
+	"Оригинальный*": "original",
+	"Классика": "classic",
+	"Альтернативный": "alternative1"
+}
+
+@var	select 		theme 						"Цветовая тема" 																{
   	"Стандартная*": "original",
 	"Just Dark": "justdark",
  	"Midnight Blue": "nightblue"
 }
+
 @var 	checkbox 	conflictsRemove "Предотвратить конфликтные ситуации на форуме, убрать критику в сторону операторов" 0
 }
 ==/UserStyle== */
@@ -71,6 +78,32 @@
 		}
 	}
 	
+	/* alternative logos */
+	if altLogo == original {
+		a.logo img {
+			display: default;
+		}
+	}
+	if altLogo == classic {
+		a.logo {
+			background: url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/old-logo.png);
+			width: 510px;
+			height: 145px;
+		}
+		a.logo img {
+			display: none;
+		}
+	}
+	if altLogo == alternative1 {
+		a.logo {
+			background: url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/logo-alt1.png);
+			width: 510px;
+			height: 145px;
+		}
+		a.logo img {
+			display: none;
+		}
+	}
 	
 	/* main style */
 	/* new font */
