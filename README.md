@@ -1,2 +1,2 @@
 # MineCorp Dark Reloaded
-[![Generic badge](https://img.shields.io/badge/<SUBJECT>-<STATUS>-<COLOR>.svg)](https://shields.io/)
+[![Установить с помощью Stylus](https://img.shields.io/badge/Install%20directly%20with-Stylus-00adad.svg)](https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/mcd.user.css)
