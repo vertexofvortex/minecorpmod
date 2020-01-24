@@ -1,31 +1,31 @@
 /* ==UserStyle==
-@name         MineCorp Dark Reloaded
-@namespace    https://github.com/vertexofvortex/vertexofvortex.github.io
-@homepageURL  https://github.com/vertexofvortex/vertexofvortex.github.io
+@name         MineCorp MOD
+@namespace    https://vertexofvortex.github.io/minecorpmod
+@homepageURL  https://github.com/vertexofvortex/MCDreloaded
 @version      1.0.0
 @license      Other
-@description  theme is theme
+@description  Улучшенная тема для форума MineCorp. Имеет в арсенале множество твиков, позволяющих сделать внешний форума более презентабельным. В наличии имеет несколько цветовых оформлений, в том числе и тёмное.
 @author       vertexofvortex
 @preprocessor stylus
 
-@var	checkbox 	brdRemove 					"Скрыть доску объявлений"														0
-@var 	checkbox 	brdLinksHighlightRemove		"Убрать разноцветные выделения ссылок на доске объявлений" 						0
-@var	checkbox 	menuSocialsRemove 			"Скрыть кнопки Discord, ВКонтакте и поддержки в верхнем меню" 					0
-@var 	checkbox	fullwidthAvatars			"Сделать аватары игроков полной ширины" 										0
-@var 	checkbox	editorLargerFont			"Увеличить шрифт в полях ввода (создание темы, ответа)" 						0
-@var	select		altLogo						"Логотип MineCorp"																{
-	"Оригинальный*": "original",
-	"Классика": "classic",
-	"Альтернативный": "alternative1"
+@var	checkbox 	brdRemove 				"Скрыть доску объявлений"											0
+@var 	checkbox 	brdHighlightRemove		"Убрать разноцветные выделения ссылок на доске объявлений" 			0
+@var	checkbox 	menuSocialsRemove 		"Скрыть кнопки Discord, ВКонтакте и поддержки в верхнем меню" 		0
+@var 	checkbox	fullwidthAvatars		"Сделать аватары игроков полной ширины" 							0
+@var 	checkbox	editorLargerFont		"Увеличить шрифт в полях ввода (создание темы, ответа)" 			0
+@var	select		altLogo					"Логотип MineCorp"													{
+	"Оригинальный*": 	"original",
+	"Классика":			"classic",
+	"Альтернативный": 	"alternative1"
 }
 
-@var	select 		theme 						"Цветовая тема" 																{
-  	"Стандартная*": "original",
-	"Just Dark": "justdark",
- 	"Midnight Blue": "nightblue"
+@var	select 		theme 					"Цветовая тема" 												{
+  	"Стандартная*": 	"original",
+	"Just Dark": 		"justdark",
+ 	"Midnight Blue": 	"nightblue"
 }
 
-@var 	checkbox 	conflictsRemove "Предотвратить конфликтные ситуации на форуме, убрать критику в сторону операторов" 0
+@var checkbox conflictsRemove "Предотвратить конфликтные ситуации на форуме, убрать критику в сторону операторов" 0
 }
 ==/UserStyle== */
 @-moz-document domain("forum.minecorp.ru") {
@@ -38,7 +38,7 @@
 	}
 	
 	/* announcement board disable links highlight*/
-	if brdLinksHighlightRemove {
+	if brdHighlightRemove {
 		div#brd-announcement div.content p span a span strong span,
 		div#brd-announcement div.content p span span strong span {
 			background: none !important;
