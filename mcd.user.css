@@ -12,7 +12,7 @@
 @var 	checkbox 	brdLinksHighlightRemove		"Убрать разноцветные выделения ссылок на доске объявлений" 						0
 @var	checkbox 	menuSocialsRemove 			"Скрыть кнопки Discord, ВКонтакте и поддержки в верхнем меню" 					0
 @var 	checkbox	fullwidthAvatars			"Сделать аватары игроков полной ширины" 										0
-@var 	checkbox	editorLargerFont			"Увеличить шрифт и интервал между строками в окне редактирования темы/ответа" 	0
+@var 	checkbox	editorLargerFont			"Увеличить шрифт в полях ввода (создание темы, ответа)" 	0
 @var	select 	theme 	"Цветовая тема" {
   	"Стандартная*": "original",
 	"Just Dark": "justdark",
@@ -62,6 +62,7 @@
 			height: inherit;
 		}
 	}
+	
 	/* larger font in the editor */
 	if editorLargerFont {
 		textarea {
@@ -70,15 +71,32 @@
 		}
 	}
 	
+	
 	/* main style */
 	/* new font */
 	* {
 	    font-family: default;
 	}
 	
-	/* --- menu bar shadow --- */
+	/* --- menu bar restyling --- */
 	#brd-navlinks {
 		box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1);
+	}
+	#brd-navlinks li:hover,
+	#brd-navlinks li:active,
+	#brd-navlinks li:focus {
+		background: hsla(0, 0%, 0%, .1);
+	}
+	#brd-navlinks li.isactive {
+		background: hsla(0, 0%, 0%, .2);
+	}
+	#topavatar,
+ 	img#topavatar {
+		border: none;
+		margin-top: 0;
+		margin-bottom: 0;
+		height: 35px;
+		width: inherit;
 	}
 	/* --- announcement board restyling --- */
 	#brd-announcement {
@@ -108,6 +126,7 @@
 	li.info-topics,
 	li.info-posts,
 	li.info-lastpost,
+	
 	div.item-subject {
 		border: default;
 	}
@@ -126,8 +145,9 @@
 	}
 	.main-foot {
 		box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1);
-		border-top: none;
-		border-radius: 0 0 6px 6px;
+		border-top: 1px solid #ccc;
+		border-radius: 6px;
+		margin-top: 6px;
 	}
 	.paging a,
 	.paging strong {
@@ -143,6 +163,9 @@
 	}
 	.main-content .sticky {
 		background: none;
+	}
+	.main-content {
+		border-radius: 0 0 6px 6px;
 	}
 	#brd-qpost {
 		border-radius: 0 0 6px 6px;
@@ -180,6 +203,9 @@
 		padding-left: 10px;
 		padding-right: 10px;
 	}
+	.lastpost .postfoot .post-options {
+		border-radius: 0 0 6px 0;
+	}
 	#topic-review {
 		border-radius: 0 0 6px 6px;
 	}
@@ -209,11 +235,16 @@
 	}
 	.main-menu {
 		border-radius: 6px 6px 0 0;
+		border: 0;
 	}
 	#pun_bbcode_bar input[type=button].image,
  	#pun_bbcode_bar #pun_bbcode_button_smiles.image
 	#pun_bbcode_bar #pun_bbcode_button_fancy_spoiler.image {
 		background-color: #fefefe;
+	}
+	.main-content,
+ 	.main-topic .lastpost {
+		border-radius: 0 0 6px 6px !important;
 	}
 	
 	/* --- user profile --- */
@@ -240,11 +271,14 @@
 		body {
       		background: #222;
     	}
+		#brd-navlinks {
+			background: #639146;
+		}
 		#brd-announcement, 
 		#brd-announcement * {
 			background: #2e2e2e;
 			border-color: #474747;
-			color: #fff !important;
+			color: #5c5c5c !important;
 		}
 		.main-head {
 			background: #639146;
@@ -266,10 +300,16 @@
 		li.info-posts,
 		li.info-posts strong,
 		li.info-lastpost,
-		div.item-subject {
+		div.item-subject,
+ 		li.info-replies strong,
+ 		li.info-views strong{
 			border-color: #474747;
 			color: #fff;
 		}
+		#visit-links a, #visit-links a:link, #visit-links a:visited {
+			color: #fff;
+		}
+		#brd-index .main-item .hn span,
 		.main-content a {
 			color: #83d152;
 		}
@@ -279,6 +319,9 @@
 			background: #363636;
 			border-color: #474747;
 			color: #fff;
+		}
+		#brd-stats strong a {
+			color: #83d152;
 		}
 		#brd-online,
  		#brd-online span {
@@ -301,7 +344,7 @@
 			background-image: url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/status.png) !important;
 		}
 		.post {
-			background: #2e2e2e;
+			background: #363636;
 			border-bottom: #474747 1px solid !important;
 		}
 		.post,
@@ -311,24 +354,45 @@
 		.postbody,
  		.posthead,
  		.post-options {
-			background: #363636;
+			background: #2e2e2e;
 			border-left-width: 0px !important;
 		}
 		p.paging strong,
 		p.paging a {
 			background: #2e2e2e;
 			border: #474747 1px solid;
+			color: #83d152;
+		}
+		p.paging strong {
+			background: #363636;
+		}
+		.p.paging a:hover {
+			color: #83d152;
+			border-color: #83d152;
 		}
 		.quotebox {
-			background-color: #2e2e2e !important;
+			background-color: #363636 !important;
 			background-image: url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/quote.png) !important;
 			outline: none !important;
 			border: #474747 1px solid !important;
 			border-radius: 6px;
 		}
+		.brd .entry-content .codebox {
+			background-color: #363636 !important;
+			background-image: url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/code.png) !important;
+			outline: none !important;
+			border-top: 1px solid;
+			border-right: 1px solid;
+			border-bottom: 1px solid;
+			border-color: #474747;
+			border-radius: 6px;
+		}
 		.fancy_spoiler_switcher {
-			background: #2e2e2e;
+			background: #363636;
 			border: #474747 1px solid !important;
+		}
+		.fancy_spoiler_switcher p {
+			color: #fff;
 		}
 		.brd .postfoot .post-actions span {
 			background: #2e2e2e;
@@ -366,71 +430,302 @@
 		span.sig-line {
 			border-color: #474747;
 		}
-		.main-foot {
-			border-top-width: 0px !important;
+		.main-content .main-item .hn .item-status em.sticky,
+		.main-content .main-item .hn .item-status em.closed {
+			color: #fff;
+		}
+		.crumbs a {
+			color: #83d152;
+		}
+		.main-foot .options a:link, .main-foot .options a:visited {
+			color: #83d152;
+		}
+		.main-topic .lastpost {
+			border-bottom: none!important;
+		}
+		.lastpost .postfoot .post-options {
+			background: #2e2e2e;
+			border-radius: 0 0 6px 0;
+		}
+		.ct-group table,
+		.ct-group table td,
+ 		.ct-group table th,
+ 		.main-frm .ct-group td {
+			border-color: #474747;
+			background: #2e2e2e;
+			color: #fff;
+		}
+		.ct-group table tr.even td {
+			background: #363636;
+		}
+		#brd-userlist table .tc4,
+		#brd-userlist table .tc1,
+ 		#brd-userlist table .tc2,
+ 		#brd-userlist table .tc3 {
+			border-top: none;
+		}
+		.mf-item label {
+			color: #fff;
+		}
+		textarea,
+ 		input[type="text"],
+ 		input:not([title]) {
+			color: #fff;
+		}
+		ul li strong {
+			color: #83d152;
+		}
+		label, .aslabel, .mf-set legend, .ct-legend, .ct-legend span, .ct-legend cite, .ct-legend strong {
+			color: #fff;
+		}
+		.ct-box div {
+			color: #fff;
+		}
+		.pun_pm_msg, .pun_pm_msg .post-entry .entry-content {
+			background: #2e2e2e;
+			color: #fff;
+			border: none;
+		}
+		#brd-crumbs-top .crumblast a, #brd-crumbs-top .crumblast a:hover {
+			color: #83d152;
+		}
+		.main-menu .active a, .admin-menu .active a {
+			border-top-color: #83d152;
+		}
+		.ct-box .hn {
+			color: #fff;
 		}
 	}
 	if theme == nightblue {
-    	body {
+    	span {
+			color: #fff;
+		}
+		body {
       		background: #101826;
     	}
+		#brd-navlinks {
+			background: #415f9a;
+		}
 		#brd-announcement, 
 		#brd-announcement * {
 			background: #18243a;
-			border-color: #21304d;
+			border-color: #293b60;
 			color: #415f9a !important;
 		}
 		.main-head {
 			background: #415f9a;
+			box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1) !important;
 		}
 		.item-summary {
-			background: #293b60;
+			background: #21304d;
 			color: #fff;
 		}
 		.main-subhead {
-			border-color: #21304d;
+			border-color: #293b60;
 		}
 		.main-content {
 			background: #18243a;
-			border-color: #21304d;
+			border-color: #293b60;
 		}
 		li.info-topics,
 		li.info-topics strong,
 		li.info-posts,
 		li.info-posts strong,
 		li.info-lastpost,
-		div.item-subject {
-			border-color: #21304d;
+		div.item-subject,
+ 		li.info-replies strong,
+ 		li.info-views strong{
+			border-color: #293b60;
 			color: #fff;
 		}
+		#visit-links a, #visit-links a:link, #visit-links a:visited {
+			color: #fff;
+		}
+		#brd-index .main-item .hn span,
 		.main-content a {
-			color: #5d86d7;
+			color: #6490e7;
 		}
 		#brd-stats,
  		#brd-stats span,
  		#brd-stats strong {
-			background: #293b60;
-			border-color: #21304d;
+			background: #21304d;
+			border-color: #293b60;
 			color: #fff;
+		}
+		#brd-stats strong a {
+			color: #6490e7;
 		}
 		#brd-online,
  		#brd-online span {
 			background: #18243a;
-			border-color: #21304d;
+			border-color: #293b60;
 			color: #fff;
 		}
 		li.info-replies,
-		li.info-views {
-			border-color: #21304d;
+		li.info-views,
+ 		li.info-forum {
+			border-color: #293b60;
 		}
 		.main-foot,
  		.main-foot * {
-			background: #293b60;
-			border-color: #21304d;
+			background: #21304d;
+			border-color: #293b60;
 			color: #fff;
 		}
 		.main-content .icon {
 			background-image: url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/status.png) !important;
+		}
+		.post {
+			background: #21304d;
+			border-bottom: #293b60 1px solid !important;
+		}
+		.post,
+ 		.post strong {
+			color: #fff;
+		}
+		.postbody,
+ 		.posthead,
+ 		.post-options {
+			background: #18243a;
+			border-left-width: 0px !important;
+		}
+		p.paging strong,
+		p.paging a {
+			background: #18243a;
+			border: #293b60 1px solid;
+			color: #6490e7;
+		}
+		p.paging strong {
+			background: #21304d;
+		}
+		.p.paging a:hover {
+			color: #6490e7;
+			border-color: #6490e7;
+		}
+		.quotebox {
+			background-color: #21304d !important;
+			background-image: url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/quote.png) !important;
+			outline: none !important;
+			border: #293b60 1px solid !important;
+			border-radius: 6px;
+		}
+		.brd .entry-content .codebox {
+			background-color: #21304d !important;
+			background-image: url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/code.png) !important;
+			outline: none !important;
+			border-top: 1px solid;
+			border-right: 1px solid;
+			border-bottom: 1px solid;
+			border-color: #293b60;
+			border-radius: 6px;
+		}
+		.fancy_spoiler_switcher {
+			background: #21304d;
+			border: #293b60 1px solid !important;
+		}
+		.fancy_spoiler_switcher p {
+			color: #fff;
+		}
+		.brd .postfoot .post-actions span {
+			background: #18243a;
+			border: #293b60 1px solid;
+		}
+		.main-subhead {
+			background: #18243a;
+			border-color: #293b60;
+		}
+		p.options,
+ 		.required label span{
+			color: #fff;
+		}
+		#brd-qpost {
+			background: #21304d;
+			border-color: #293b60;
+		}
+		textarea,
+ 		input[type="text"],
+ 		input:not([title]) {
+			border-radius: 6px;
+			background: #18243a !important;
+			box-shadow: none!important;
+			border-color: #293b60;
+		}
+		.frm-buttons, .extension .options, .hotfix .options {
+			border-color: #293b60;
+		}
+		#pun_bbcode_bar input[type=button].image,
+ 		#pun_bbcode_bar #pun_bbcode_button_smiles.image
+		#pun_bbcode_bar #pun_bbcode_button_fancy_spoiler.image {
+			background-color: #18243a;
+			border-color: #293b60;
+		}
+		span.sig-line {
+			border-color: #293b60;
+		}
+		.main-content .main-item .hn .item-status em.sticky,
+		.main-content .main-item .hn .item-status em.closed {
+			color: #fff;
+		}
+		.crumbs a {
+			color: #6490e7;
+		}
+		.main-foot .options a:link, .main-foot .options a:visited {
+			color: #6490e7;
+		}
+		.main-topic .lastpost {
+			border-bottom: none!important;
+		}
+		.lastpost .postfoot .post-options {
+			background: #18243a;
+			border-radius: 0 0 6px 0;
+		}
+		.ct-group table,
+		.ct-group table td,
+ 		.ct-group table th,
+ 		.main-frm .ct-group td {
+			border-color: #293b60;
+			background: #18243a;
+			color: #fff;
+		}
+		.ct-group table tr.even td {
+			background: #21304d;
+		}
+		#brd-userlist table .tc4,
+		#brd-userlist table .tc1,
+ 		#brd-userlist table .tc2,
+ 		#brd-userlist table .tc3 {
+			border-top: none;
+		}
+		.mf-item label {
+			color: #fff;
+		}
+		textarea,
+ 		input[type="text"],
+ 		input:not([title]) {
+			color: #fff;
+		}
+		ul li strong {
+			color: #6490e7;
+		}
+		label, .aslabel, .mf-set legend, .ct-legend, .ct-legend span, .ct-legend cite, .ct-legend strong {
+			color: #fff;
+		}
+		.ct-box div {
+			color: #fff;
+		}
+		.pun_pm_msg, .pun_pm_msg .post-entry .entry-content {
+			background: #18243a;
+			color: #fff;
+			border: none;
+		}
+		#brd-crumbs-top .crumblast a, #brd-crumbs-top .crumblast a:hover {
+			color: #6490e7;
+		}
+		.main-menu .active a, .admin-menu .active a {
+			border-top-color: #6490e7;
+		}
+		.ct-box .hn {
+			color: #fff;
 		}
 	}
 }
