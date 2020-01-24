@@ -95,9 +95,13 @@
 		border: none;
 		margin-top: 0;
 		margin-bottom: 0;
-		height: 35px;
+		max-height: unset;
+		height: 100%;
 		width: inherit;
 	}
+	#topavatar:hover,
+ 	#topavatar:focus {
+		border: none;	}
 	/* --- announcement board restyling --- */
 	#brd-announcement {
 		background: #fbfbfb;
