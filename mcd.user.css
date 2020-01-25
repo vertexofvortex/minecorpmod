@@ -13,6 +13,7 @@
 @var	checkbox 	menuSocialsRemove 		"Скрыть кнопки Discord, ВКонтакте и поддержки в верхнем меню" 		0
 @var 	checkbox	fullwidthAvatars		"Сделать аватары игроков полной ширины" 							0
 @var 	checkbox	editorLargerFont		"Увеличить шрифт в полях ввода (создание темы, ответа)" 			0
+@var 	checkbox	menuSticky				"Приклеить меню к верхней части экрана" 			0
 @var	select		altLogo					"Логотип MineCorp"													{
 	"Оригинальный*": 	"original",
 	"Классика":			"classic",
@@ -26,7 +27,7 @@
 	"Lava":				"lava"
 }
 
-@var checkbox conflictsRemove "Предотвратить конфликтные ситуации на форуме, убрать критику в сторону операторов" 0
+@var checkbox conflictsRemove "ПСОИБиСАГО" 0
 }
 ==/UserStyle== */
 @-moz-document domain("forum.minecorp.ru") {
@@ -105,6 +106,18 @@
 			display: none;
 		}
 	}
+	if menuSticky {
+		#brd-navlinks {
+			position: fixed;
+			width: 100vw;
+			top: 0px;
+			opacity: 95%;
+		}
+		body {
+			padding-top: 35px;
+		}
+	}
+	
 	
 	/* main style */
 	/* new font */
@@ -780,6 +793,8 @@
     	}
 		#brd-navlinks {
             background: #d48d22;
+			background-image: url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/lava.png);
+			background-position-y: 50%;
             animation: bg 10s infinite;
 		}
 		#brd-announcement, 
@@ -790,7 +805,9 @@
 		}
 		.main-head {
             background: #d48d22;
+			background-image: url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/lava.png);
             animation: bg 10s infinite;
+			background-position-y: 50%;
 			box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1) !important;
 		}
 		.item-summary {
@@ -1007,9 +1024,16 @@
 		.posting a.newpost {
 			background: #d48d22;
 			border: 0px;
+			background-image: url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/lava.png);
 			animation: bg 10s infinite;
+			background-position-y: 50%;
 		}
 		
+		/*@keyframes bg {
+                0%      {background-position-x: 0%}
+                50%    {background-position-x: 100%; background-position-x: 30%}
+                100%    {background-position-x: 0%}
+        }*/
         @keyframes bg {
             0%      {background: #b33221}
             25%     {background: #d9910a}
