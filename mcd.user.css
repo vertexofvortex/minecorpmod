@@ -22,7 +22,8 @@
 @var	select 		theme 					"Цветовая тема" 												{
   	"Стандартная*": 	"original",
 	"Just Dark": 		"justdark",
- 	"Midnight Blue": 	"nightblue"
+ 	"Midnight Blue": 	"nightblue",
+	"Lava":				"lava"
 }
 
 @var checkbox conflictsRemove "Предотвратить конфликтные ситуации на форуме, убрать критику в сторону операторов" 0
@@ -141,6 +142,11 @@
 		border: #cccccc 1px solid;
 		border-radius: 6px;
 		box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1);
+	}
+	div#brd-announcement div.content p span a span strong span,
+	div#brd-announcement div.content p span span strong span {
+		padding: 2px;
+		border-radius: 2px;
 	}
 
 	/* --- main forums restyling --- */
@@ -764,5 +770,252 @@
 		.ct-box .hn {
 			color: #fff;
 		}
+	}
+	if theme == lava {
+		        span {
+			color: #fff;
+		}
+		body {
+      		background: rgb(20, 20, 20);
+    	}
+		#brd-navlinks {
+            background: #d48d22;
+            animation: bg 10s infinite;
+		}
+		#brd-announcement, 
+		#brd-announcement * {
+			background: #2e2e2e;
+			border-color: #474747;
+			color: #5c5c5c !important;
+		}
+		.main-head {
+            background: #d48d22;
+            animation: bg 10s infinite;
+			box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1) !important;
+		}
+		.item-summary {
+			background: #363636;
+			color: #fff;
+		}
+		.main-subhead {
+			border-color: #474747;
+		}
+		.main-content {
+			background: #2e2e2e;
+			border-color: #474747;
+		}
+		li.info-topics,
+		li.info-topics strong,
+		li.info-posts,
+		li.info-posts strong,
+		li.info-lastpost,
+		div.item-subject,
+ 		li.info-replies strong,
+ 		li.info-views strong{
+			border-color: #474747;
+			color: #fff;
+		}
+		#visit-links a, #visit-links a:link, #visit-links a:visited {
+			color: #fff;
+		}
+		#brd-index .main-item .hn span,
+		.main-content a {
+			color: #d48d22;
+		}
+		#brd-stats,
+ 		#brd-stats span,
+ 		#brd-stats strong {
+			background: #363636;
+			border-color: #474747;
+			color: #fff;
+		}
+		#brd-stats strong a {
+			color: #d48d22;
+		}
+		#brd-online,
+ 		#brd-online span {
+			background: #2e2e2e;
+			border-color: #474747;
+			color: #fff;
+		}
+		li.info-replies,
+		li.info-views,
+ 		li.info-forum {
+			border-color: #474747;
+		}
+		.main-foot,
+ 		.main-foot * {
+			background: #363636;
+			border-color: #474747;
+			color: #fff;
+		}
+		.main-content .icon {
+			background-image: url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/status.png) !important;
+		}
+		.post {
+			background: #363636;
+			border-bottom: #474747 1px solid !important;
+		}
+		.post,
+ 		.post strong {
+			color: #fff;
+		}
+		.postbody,
+ 		.posthead,
+ 		.post-options {
+			background: #2e2e2e;
+			border-left-width: 0px !important;
+		}
+		p.paging strong,
+		p.paging a {
+			background: #2e2e2e;
+			border: #474747 1px solid;
+			color: #d48d22;
+		}
+		p.paging strong {
+			background: #363636;
+		}
+		.p.paging a:hover {
+			color: #d48d22;
+			border-color: #d48d22;
+		}
+		.quotebox {
+			background-color: #363636 !important;
+			background-image: url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/quote.png) !important;
+			outline: none !important;
+			border: #474747 1px solid !important;
+			border-radius: 6px;
+		}
+		.brd .entry-content .codebox {
+			background-color: #363636 !important;
+			background-image: url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/code.png) !important;
+			outline: none !important;
+			border-top: 1px solid;
+			border-right: 1px solid;
+			border-bottom: 1px solid;
+			border-color: #474747;
+			border-radius: 6px;
+		}
+		.fancy_spoiler_switcher {
+			background: #363636;
+			border: #474747 1px solid !important;
+		}
+		.fancy_spoiler_switcher p {
+			color: #fff;
+		}
+		.brd .postfoot .post-actions span {
+			background: #2e2e2e;
+			border: #474747 1px solid;
+		}
+		.main-subhead {
+			background: #2e2e2e;
+			border-color: #474747;
+		}
+		p.options,
+ 		.required label span{
+			color: #fff;
+		}
+		#brd-qpost {
+			background: #363636;
+			border-color: #474747;
+		}
+		textarea,
+ 		input[type="text"],
+ 		input:not([title]) {
+			border-radius: 6px;
+			background: #2e2e2e !important;
+			box-shadow: none!important;
+			border-color: #474747;
+		}
+		.frm-buttons, .extension .options, .hotfix .options {
+			border-color: #474747;
+		}
+		#pun_bbcode_bar input[type=button].image,
+ 		#pun_bbcode_bar #pun_bbcode_button_smiles.image
+		#pun_bbcode_bar #pun_bbcode_button_fancy_spoiler.image {
+			background-color: #2e2e2e;
+			border-color: #474747;
+		}
+		span.sig-line {
+			border-color: #474747;
+		}
+		.main-content .main-item .hn .item-status em.sticky,
+		.main-content .main-item .hn .item-status em.closed {
+			color: #fff;
+		}
+		.crumbs a {
+			color: #d48d22;
+		}
+		.main-foot .options a:link, .main-foot .options a:visited {
+			color: #d48d22;
+		}
+		.main-topic .lastpost {
+			border-bottom: none!important;
+		}
+		.lastpost .postfoot .post-options {
+			background: #2e2e2e;
+			border-radius: 0 0 6px 0;
+		}
+		.ct-group table,
+		.ct-group table td,
+ 		.ct-group table th,
+ 		.main-frm .ct-group td {
+			border-color: #474747;
+			background: #2e2e2e;
+			color: #fff;
+		}
+		.ct-group table tr.even td {
+			background: #363636;
+		}
+		#brd-userlist table .tc4,
+		#brd-userlist table .tc1,
+ 		#brd-userlist table .tc2,
+ 		#brd-userlist table .tc3 {
+			border-top: none;
+		}
+		.mf-item label {
+			color: #fff;
+		}
+		textarea,
+ 		input[type="text"],
+ 		input:not([title]) {
+			color: #fff;
+		}
+		ul li strong {
+			color: #d48d22;
+		}
+		label, .aslabel, .mf-set legend, .ct-legend, .ct-legend span, .ct-legend cite, .ct-legend strong {
+			color: #fff;
+		}
+		.ct-box div {
+			color: #fff;
+		}
+		.pun_pm_msg, .pun_pm_msg .post-entry .entry-content {
+			background: #2e2e2e;
+			color: #fff;
+			border: none;
+		}
+		#brd-crumbs-top .crumblast a, #brd-crumbs-top .crumblast a:hover {
+			color: #d48d22;
+		}
+		.main-menu .active a, .admin-menu .active a {
+			border-top-color: #d48d22;
+		}
+		.ct-box .hn {
+			color: #fff;
+        }
+		.posting a.newpost {
+			background: #d48d22;
+			border: 0px;
+			animation: bg 10s infinite;
+		}
+		
+        @keyframes bg {
+            0%      {background: #b33221}
+            25%     {background: #d9910a}
+            50%     {background: #e4c931}
+            75%     {background: #d78201}
+            100%    {background: #b33221}
+        }
 	}
 }
