@@ -28,7 +28,9 @@
 	* [для Mozilla Firefox](https://addons.mozilla.org/ru/firefox/addon/styl-us/);
 2. Перейдите по [прямой ссылке](https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/mcd.user.css) на стиль. Должна автоматически открыться новая вкладка от Стилуса. Приблизительно как на скриншоте.
 
-	![alt text](https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/example.png "Logo Title Text 1")
+	![alt text](https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/example.png "Установка стиля")
 
 3. Нажмите на кнопку "Установить стиль". После установки откроется новое окно с кодом стиля — закройте его ничего не редактируя.
-4. Для настройки опций стиля нажмите на иконку расширения около адресной строки браузера (там же, где и остальные расширения).
+4. Для настройки опций стиля перейдите на forum.minecorp.ru и нажмите на иконку расширения около адресной строки браузера (там же, где и остальные расширения). Далее найдите установленный стиль и нажмите на шестерёнку рядом с его названием. Откроется окно его настроек.
+
+	![alt text](https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/example2.png "Настройки стиля")
