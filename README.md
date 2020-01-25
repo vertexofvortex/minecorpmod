@@ -17,12 +17,15 @@
 	* возможность выбора логотипа из нескольких вариантов (на данный момент присутствуют оригинальный, классический и альтернативный логотипы);
 	* ПСОИБиСАГО (аббревиатура) — подсистема обеспечения информационной безопасности и сохранности авторитета главных операторов. Мощный инструмент для контроля над конфликтами и критикой в сторону главных операторов.
 ### Инструкция по установке
-> Для установки стиля потребуется расширение Stylus для браузера. Если Вас не устраивает это расширение по причине совместимости, функционала или любой другой, помимо него можно использовать подобные дополнения, схожие по функционалу (список см. [здесь](https://github.com/openstyles/stylus/wiki/Stylish-alternatives) (англ.)), но я настоятельно рекомендую использовать именно Стилус, так как он умеет парсить файлы с концовкой user.css, тем самым сокращая процесс установки стилей до элементарного перехода по ссылке. Также преимущество Стилус заключается в том, что он верифицирован в каталоге расширений Mozilla Firefox, в отличие от Stylish.
+> Для установки стиля потребуется расширение Stylus для браузера. Если оно Вас не устраивает, можно использовать другие расширения, схожие с ним по функционалу (список см. [здесь](https://github.com/openstyles/stylus/wiki/Stylish-alternatives) (англ.)), но я настоятельно рекомендую использовать именно Стилус, так как процесс установки стилей в нём сокращён до элементарного перехода по ссылке *(умеет парсить файлы с концовкой user.css)*. Также преимущество Стилус заключается в том, что он верифицирован в каталоге расширений Mozilla Firefox, в отличие от, например, Stylish.
 1. Установите расширение Stylus (инструкция далее следует только для этого расширения).
 
 	Ссылки для скачивания:
 	
 	* [add0n.com](https://add0n.com/stylus.html) — содержит ссылки на установку в различных браузерах;
-	* [для Google Chrome *(+ Yandex Browser)*](https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne);
-	* [для Opera *(+ Opera GX)*](https://addons.opera.com/ru/extensions/details/stylus/);
+	* [для Google Chrome *+ Yandex Browser и прочие Chromium*](https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne);
+	* [для Opera *+ Opera GX*](https://addons.opera.com/ru/extensions/details/stylus/);
 	* [для Mozilla Firefox](https://addons.mozilla.org/ru/firefox/addon/styl-us/);
+2. Перейдите по [прямой ссылке](https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/mcd.user.css) на стиль. Должна автоматически открыться новая вкладка от Стилуса.
+
+![alt text](https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/example.png "Logo Title Text 1")
