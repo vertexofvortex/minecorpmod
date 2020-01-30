@@ -172,22 +172,16 @@
 		#topavatar,
 		img#topavatar {
 			border: none;
-			margin-top: 0;
-			margin-bottom: 0;
-			max-height: unset;
-			height: 100%;
-			width: inherit;
 		}
 		#topavatar:hover,
 		#topavatar:focus {
 			border: none;	}
 		/* announcement board restyling */
 		#brd-announcement {
-			border: 1px solid;
+			border: borderColor 1px solid;
 			border-radius: 6px;
 			box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1);
 			background: primaryColor;
-			border-color: borderColor;
 		}
 		div#brd-announcement div.content p span a span strong span,
 		div#brd-announcement div.content p span span strong span {
@@ -195,7 +189,7 @@
 			border-radius: 2px;
 		}
 		#brd-announcement,
-		 #brd-announcement * {
+		#brd-announcement * {
 			color: fontColor;	
 		}
 		#visit-links a,
