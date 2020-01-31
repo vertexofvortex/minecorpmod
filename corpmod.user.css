@@ -3,13 +3,13 @@
 @namespace    	https://vertexofvortex.github.io/minecorpmod
 @homepageURL  	https://github.com/vertexofvortex/MCDreloaded
 @updateURL 	https://raw.githubusercontent.com/vertexofvortex/minecorpmod/master/corpmod.user.css
-@version      	1.1.4
+@version      	1.1.5
 @license      	MIT
 @description  	Улучшенная тема для форума MineCorp. Имеет в арсенале множество твиков, позволяющих сделать внешний форума более презентабельным. Обеспечивает поддержку нескольких цветовых оформлений, в том числе и тёмной темы.
 @author       	vertexofvortex
 @preprocessor 	stylus
 
-@var checkbox newTheme "Улучшенная тема" 0
+@var checkbox newTheme "Улучшенное оформление" 1
 @var select colorTheme "Цветовая схема" {
   	"Стандартная*": "original",
 	"Greendark": "greendark",
@@ -20,10 +20,13 @@
 }
 @var checkbox brdRemove "Скрыть доску объявлений" 0
 @var checkbox wideforum "Сделать форум шире" 0
-@var checkbox brdHighlightRemove "Убрать разноцветные выделения ссылок на доске объявлений" 0
+@var checkbox brdHighlightRemove "Убрать выделения ссылок на доске объявлений" 0
 @var checkbox menuSocialsRemove "Скрыть кнопки Discord, ВКонтакте и поддержки в верхнем меню" 0
 @var checkbox fullwidthAvatars "Сделать аватары игроков полной ширины" 0
-@var checkbox removeAvatar "Убрать свой аватар в меню (вверху слева)" 0
+@var checkbox blurAvatars "Размыть все аватары игроков (может не работать в некоторых браузерах)" 0
+@var checkbox hideAvatars "Скрыть все аватары игроков" 0
+@var checkbox hideSignatures "Скрыть все подписи игроков (используйте вместе с пред. опцией для сверхкомпактного вида форума)" 0
+@var checkbox removeAvatar "Убрать свой аватар из верхнего меню (слева)" 0
 @var checkbox editorLargerFont "Увеличить шрифт в полях ввода (создание темы, ответа)" 0
 @var checkbox menuSticky	"Приклеить меню к верхней части экрана [DEV]" 0
 @var select	altLogo	"Логотип MineCorp" {
@@ -147,6 +150,21 @@
 	}
 	if removeAvatar {
 		#topavatar, img#topavatar {
+			display: none;
+		}
+	}
+	if blurAvatars {
+		.useravatar img {
+			filter: blur(6px);
+		}
+	}
+	if hideAvatars {
+		.useravatar {
+			display: none;
+		}
+	}
+	if hideSignatures {
+		.sig-content {
 			display: none;
 		}
 	}
