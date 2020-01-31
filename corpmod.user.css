@@ -2,8 +2,8 @@
 @name         	MineCorp MOD
 @namespace    	https://vertexofvortex.github.io/minecorpmod
 @homepageURL  	https://github.com/vertexofvortex/MCDreloaded
-@updateURL 	https://raw.githubusercontent.com/vertexofvortex/minecorpmod/master/corpmod.user.css
-@version      	1.1.5
+@updateURL 		https://raw.githubusercontent.com/vertexofvortex/minecorpmod/master/corpmod.user.css
+@version      	1.1.6
 @license      	MIT
 @description  	Улучшенная тема для форума MineCorp. Имеет в арсенале множество твиков, позволяющих сделать внешний форума более презентабельным. Обеспечивает поддержку нескольких цветовых оформлений, в том числе и тёмной темы.
 @author       	vertexofvortex
@@ -13,10 +13,13 @@
 @var select colorTheme "Цветовая схема" {
   	"Стандартная*": "original",
 	"Greendark": "greendark",
+	"Greenlight": "greenlight",
 	"Midnight Blue": "nightblue",
  	"Latte": "latte",
 	"Kamikaze Letter": "kami",
 	"The Hellwalker": "hellwalker",
+	"Mono": "mono",
+	"Minimal": "minimal",
 }
 @var checkbox brdRemove "Скрыть доску объявлений" 0
 @var checkbox wideforum "Сделать форум шире" 0
@@ -230,11 +233,46 @@
 		secondaryColor = #363636
 		fontColor = #ffffff
 		fontSpecialColor = #83d152
-		bgPlaceholder = #222
+		bgPlaceholder = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/bg-old-dark.png)
 		statusPlaceholder = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/status.png)
 		quoteboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/quote.png)
 		codeboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/code.png)
 		overlayColor = rgba(0, 0, 0, .1)
+	}
+	if colorTheme == greenlight {
+		accentColor = #639146
+		borderColor = #ccc
+		primaryColor = #e8e8e8
+		secondaryColor = #d9d9d9
+		fontColor = default
+		fontSpecialColor = #49752d
+		bgPlaceholder = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/bg-old.png)
+		statusPlaceholder = default
+		quoteboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/quote.png)
+		codeboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/code.png)
+		overlayColor = rgba(198, 198, 198, .1)
+	}
+	if colorTheme == mono {
+		accentColor = #4f4f4f
+		borderColor = #c3c3c3
+		primaryColor = #d9d9d9
+		secondaryColor = #d9d9d9
+		fontColor = #464646
+		fontSpecialColor = #000
+		bgPlaceholder = #bfbfbf
+		statusPlaceholder = default
+		quoteboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/quote.png)
+		codeboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/code.png)
+		overlayColor = rgba(198, 198, 198, .1)
+		
+		#brd-announcement span[style="background-color:#ccffcc"],
+ 		#brd-announcement span[style="background-color:#99ccff"],
+ 		#brd-announcement span[style="background-color:#ffccff"],
+ 		#brd-announcement span[style="background-color:#ffcccc"],
+ 		#brd-announcement span[style="background-color:#ffcc99"] {
+			background-color: accentColor !important;
+			color: white;
+		}
 	}
 	if colorTheme == nightblue {
 		accentColor = #415f9a
@@ -293,6 +331,83 @@
  		#brd-announcement span[style="background-color:#ffcc99"] {
 			background-color: accentColor !important;
 			color: fontColor;
+		}
+	}
+	if colorTheme == minimal {
+		accentColor = default
+		borderColor = #ccc
+		primaryColor = default
+		secondaryColor = default
+		fontColor = default
+		fontSpecialColor = default
+		bgPlaceholder = default
+		statusPlaceholder = default
+		quoteboxImg = default
+		codeboxImg = default
+		overlayColor = rgba(198, 198, 198, .1)
+		
+		#brd-announcement {
+			display: none;
+		}
+		a.logo {
+			display: none;
+		}
+		.main-content .main-item .icon {
+			display: none;
+		}
+		.main-item {
+			padding-left: 0px !important;
+			min-height: unset !important;
+		}
+		.main-item .item-subject {
+			border-left: 0px !important;
+		}
+		.item-subject span.modlist,
+ 		.item-subject p,
+ 		.item-summary .info-lastpost {
+			display: none;
+		}
+		.main-content .main-item ul {
+			width: unset;
+		}
+		.main-content .main-item li.info-lastpost {
+			display: none;
+		}
+		.item-summary .info-posts,
+		.item-summary .info-views {
+			left: 992em;
+		}
+		.item-summary .info-topics,
+		.item-summary .info-replies {
+			left: 985.2em;
+		}
+		#brd-stats {
+			display: none;
+		}
+		#brd-online {
+			border-top: 1px solid borderColor;
+			border-radius: 6px !important;
+		}
+		.entry-content {
+			min-height: unset;
+		}
+		.postbody {
+			padding-top: 0px;
+		}
+		.post-edit {
+			display: none;
+		}
+		.postfoot {
+			display: none;
+		}
+		.post-author {
+			display: none;
+		}
+		.sig-content {
+			display: none;
+		}
+		.entry-content {
+			padding-bottom: 0px;
 		}
 	}
 	
