@@ -1,5 +1,5 @@
 # MineCorp MOD
-[![Установить с помощью Stylus](https://img.shields.io/badge/Install%20directly%20with-Stylus-00adad.svg)](https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/mcd.user.css)
+[![Установить с помощью Stylus](https://img.shields.io/badge/Install%20directly%20with-Stylus-00adad.svg)](https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/corpmod.user.css)
 
 ## Изменения, вносимые стилем MineCorp MOD в работу форума
 Данный стиль не привносит никаких изменений как в структуру сайта на уровне HTML-разметки, так и в работу подключенных к нему скриптов. Дополнение представляет собой исключительно пользовательский набор стилей CSS, подключаемый при помощи расширения для браузера Stylus (и подобных ему). **Стиль физически не может нанести вред работоспособности вашего компьютера.**
