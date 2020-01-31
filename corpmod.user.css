@@ -3,7 +3,7 @@
 @namespace    	https://vertexofvortex.github.io/minecorpmod
 @homepageURL  	https://github.com/vertexofvortex/MCDreloaded
 @updateURL 	https://raw.githubusercontent.com/vertexofvortex/minecorpmod/master/corpmod.user.css
-@version      	1.1.3
+@version      	1.1.4
 @license      	MIT
 @description  	Улучшенная тема для форума MineCorp. Имеет в арсенале множество твиков, позволяющих сделать внешний форума более презентабельным. Обеспечивает поддержку нескольких цветовых оформлений, в том числе и тёмной темы.
 @author       	vertexofvortex
@@ -15,7 +15,7 @@
 	"Greendark": "greendark",
 	"Midnight Blue": "nightblue",
  	"Latte": "latte",
-	"Visual": "visual",
+	"Kamikaze Letter": "kami",
 	"The Hellwalker": "hellwalker",
 }
 @var checkbox brdRemove "Скрыть доску объявлений" 0
@@ -45,6 +45,18 @@
 		background-repeat: no-repeat;
 		width: 510px;
 		height: 145px;
+	}
+	a[title="Перейти в профиль пользователя vertexofvortex"]:after,
+ 	a[title="Перейти в профиль пользователя TheKamikadza"]:after,
+	a[title="Перейти в профиль пользователя Рэтчет"]:after {
+		content: "MC MOD";
+		background: #dd831d;
+		padding: 2px;
+		margin-left: 3px;
+		border-radius: 2px;
+		color: white;
+		font-size: 0.75em;
+		white-space: nowrap;
 	}
 	/* TWEAKS */
 	/* announcement board hiding */
@@ -165,7 +177,7 @@
 		codeboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/code.png)
 		overlayColor = hsla(0, 0%, 27%, .1)
 	}
-	if colorTheme == visual {
+	if colorTheme == kami {
 		accentColor = #2f5b9d
 		borderColor = #434346
 		primaryColor = #1e1e1e
@@ -234,6 +246,7 @@
 		
 		body {
 			background-attachment: fixed !important;
+			background-position: center !important;
 		}
 		a.logo {
 			background: url(https://raw.githubusercontent.com/vertexofvortex/minecorpmod/master/images/logo-thehellwalker.png);
@@ -303,7 +316,7 @@
 			border: borderColor 1px solid;
 			border-radius: 6px;
 			box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1);
-			background: primaryColor;
+			background: secondaryColor;
 		}
 		div#brd-announcement div.content p span a span strong span,
 		div#brd-announcement div.content p span span strong span {
