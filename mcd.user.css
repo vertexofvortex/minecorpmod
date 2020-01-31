@@ -2,28 +2,28 @@
 @name         MineCorp MOD
 @namespace    https://vertexofvortex.github.io/minecorpmod
 @homepageURL  https://github.com/vertexofvortex/MCDreloaded
-@version      1.0.0
+@version      1.0.10
 @license      Other
-@description  Улучшенная тема для форума MineCorp. Имеет в арсенале множество твиков, позволяющих сделать внешний форума более презентабельным. В наличии имеет несколько цветовых оформлений, в том числе и тёмное.
+@description  Улучшенная тема для форума MineCorp. Имеет в арсенале множество твиков, позволяющих сделать внешний форума более презентабельным. Обеспечивает поддержку нескольких цветовых оформлений, в том числе и тёмной темы.
 @author       vertexofvortex
 @preprocessor stylus
 
-@var 	checkbox	newTheme			"Улучшенная тема" 															0
-@var	select 		colorTheme 				"Цветовая тема" 														{
-  	"Стандартная*": 		"original",
-	"Grayscale": 			"grayscale",
- 	"Midnight Blue": 		"nightblue",
+@var checkbox newTheme "Улучшенная тема" 0
+@var select colorTheme "Цветовая тема" {
+  	"Стандартная*": "original",
+	"Grayscale": "grayscale",
+ 	"Midnight Blue": "nightblue",
 }
-@var	checkbox 	brdRemove 			"Скрыть доску объявлений"											0
-@var 	checkbox 	brdHighlightRemove	"Убрать разноцветные выделения ссылок на доске объявлений" 			0
-@var	checkbox 	menuSocialsRemove 	"Скрыть кнопки Discord, ВКонтакте и поддержки в верхнем меню" 		0
-@var 	checkbox	fullwidthAvatars	"Сделать аватары игроков полной ширины" 							0
-@var 	checkbox	editorLargerFont	"Увеличить шрифт в полях ввода (создание темы, ответа)" 			0
-@var 	checkbox	menuSticky			"Приклеить меню к верхней части экрана [!] [dev]" 					0
-@var	select		altLogo				"Логотип MineCorp"													{
-	"Стандартный*": 		"original",
-	"Классика":				"classic",
-	"Альтернативный": 		"alternative1"
+@var checkbox brdRemove "Скрыть доску объявлений" 0
+@var checkbox brdHighlightRemove "Убрать разноцветные выделения ссылок на доске объявлений" 0
+@var checkbox menuSocialsRemove "Скрыть кнопки Discord, ВКонтакте и поддержки в верхнем меню" 0
+@var checkbox fullwidthAvatars "Сделать аватары игроков полной ширины" 0
+@var checkbox editorLargerFont "Увеличить шрифт в полях ввода (создание темы, ответа)" 0
+@var checkbox menuSticky	"Приклеить меню к верхней части экрана [!] [dev]" 0
+@var select	altLogo	"Логотип MineCorp" {
+	"Стандартный*": "original",
+	"Классика":	"classic",
+	"Альтернативный": "alternative1"
 }
 
 @var checkbox conflictsRemove "ПСОИБиСАГО" 0
@@ -123,6 +123,7 @@
 		statusPlaceholder = default
 		quoteboxImg = default
 		codeboxImg = default
+		overlayColor = rgba(198, 198, 198, .1)
 	}
 	if colorTheme == grayscale {
 		accentColor = #639146
@@ -135,6 +136,7 @@
 		statusPlaceholder = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/status.png)
 		quoteboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/quote.png)
 		codeboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/code.png)
+		overlayColor = rgba(0, 0, 0, .1)
 	}
 	if colorTheme == nightblue {
 		accentColor = #415f9a
@@ -147,14 +149,21 @@
 		statusPlaceholder = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/status.png)
 		quoteboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/quote.png)
 		codeboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/code.png)
+		overlayColor = rgba(0, 0, 0, .1)
 	}
 	
 	if newTheme {
 		body {
 			background: bgPlaceholder;
 		}
-		a:link, a:visited, .js_link {
+		a:link,
+		a:visited,
+		.js_link {
 			color: fontSpecialColor;
+		}
+		.js_link {
+			border-color: borderColor;
+			border-bottom: solid 1px;
 		}
 		/* menu bar restyling */
 		#brd-navlinks {
@@ -188,9 +197,8 @@
 			padding: 2px;
 			border-radius: 2px;
 		}
-		#brd-announcement,
-		#brd-announcement * {
-			color: fontColor;	
+		#brd-announcement span[style="color:#2c3e50"] {
+			color: fontColor !important;	
 		}
 		#visit-links a,
 		#visit-links a:link,
@@ -220,9 +228,6 @@
 		}
 		.main-item {
 			border-top-width: 0px !important;
-		}
-		.main-item:hover {
-			background: rgba(0, 0, 0, .03) !important;
 		}
 		.main-item * a {
 			color: fontSpecialColor;
@@ -290,6 +295,13 @@
 			border-color: secondaryColor;
 			color: fontSpecialColor;
 		}
+		.paging a:hover {
+			color: fontSpecialColor;
+			border-color: accentColor;
+		}
+		.paging span {
+			color: fontSpecialColor;
+		}
 		.posting a.newpost {
 			border-radius: 20px;
 			padding-left: 12px;
@@ -353,6 +365,7 @@
 		}
 		.posthead .hn {
 			border-bottom: none;
+			background: none;
 		}
 		.player-btn {
 			width: 180px;
@@ -372,7 +385,7 @@
 			border: borderColor 1px solid !important;
 			border-radius: 6px;
 		}
-		.codebox {
+		.brd .entry-content .codebox {
 			background-color: secondaryColor !important;
 			background-image: codeboxImg !important;
 			outline: none !important;
@@ -406,9 +419,9 @@
 			border-color: borderColor;
 		}
 		.brd .postfoot .post-actions span:hover,
-		 .brd .postfoot .post-actions span:focus,
-		 .brd .postfoot .post-actions span:hover a,
-		 .brd .postfoot .post-actions span:focus a {
+		.brd .postfoot .post-actions span:focus,
+		.brd .postfoot .post-actions span:hover a,
+		.brd .postfoot .post-actions span:focus a {
 			border-color: accentColor;
 			color: accentColor;
 		}
@@ -481,16 +494,66 @@
 			border-radius: 0 0 6px 6px !important;
 		}
 		
-		/* --- user profile --- */
-		ul.data-list li, ul.data-box li,
-		ul.data-list li, ul.data-box li {
+		/* user profile */
+		.main-menu {
+			background: accentColor;
+		}
+		.main-menu .active a,
+		.admin-menu .active a {
+			border-color: fontSpecialColor;
+		}
+		.main-menu a:hover,
+		.main-menu a:active,
+		.main-menu a:focus,
+		.admin-menu a:hover,
+		.admin-menu a:active,
+		.admin-menu a:focus {
+			border-color: fontColor;
+		}
+		ul.data-list li,
+		ul.data-box li,
+		ul.data-list li,
+		ul.data-box li {
 			border: none;
+			color: fontColor;
+		}
+		.ct-box.error-box {
+			border-color: borderColor;
+			background: secondaryColor;
+		}
+		.ct-box span,
+ 		.error-list li span {
+			color: fontColor;
+		}
+		ul li strong {
+			color: fontSpecialColor;
 		}
 		.main-content .info-box {
 			background: #f0f0f0
 		}
-		.main-item:hover {
-				transition: 0.1s ease-in-out;
+		.main-item.odd {
+			background: overlayColor;
+		}
+		.main-content .main-item .hn .posted-mark {
+			color: fontSpecialColor;
+		}
+		.user-ident .usertitle span {
+			color: fontColor;
+		}
+		label,
+		.aslabel,
+		.mf-set legend,
+		.ct-legend,
+		.ct-legend span,
+		.ct-legend cite,
+		.ct-legend strong {
+			color: fontColor;
+		}
+		.sig-demo {
+			color: fontColor;
+		}
+		.sig-demo a {
+			color: fontSpecialColor !important;
 		}
 		.crumb {
 			color: fontColor;
@@ -504,16 +567,467 @@
 			padding: 0px;
 		}
 		#rules-content div {
-			background: white !important;
+			background: secondaryColor !important;
 			border: none !important;
-			border-left: 10px solid #ddd !important;
+			border-left: 10px solid borderColor !important;
 			padding: 0px;
 		}
 		#rules-content * {
 			font-family: inherit !important;
+			color: fontColor;
+		}
+		.sf-set .text label span,
+		.sf-set .select label span,
+		.sf-set .aslabel span,
+ 		.mf-set legend span {
+			color: fontColor;
+		}
+		.mf-item label,
+ 		.ct-box .hn {
+			color: fontColor;
+		}
+		.content-options, .ct-options {
+			color: fontColor;
+		}
+		.main-content .info-box {
+			background: secondaryColor;
+			color: accentColor;
+		}
+		.main-content .info-box span {
+			color: fontColor;
+		}
+		li::marker {
+			color: fontSpecialColor
+		}
+		.ct-group table {
+			background: secondaryColor;
+			border-color: borderColor;
+			color: fontColor;
+		}
+		.ct-group table th {
+			background: secondaryColor;
+			border: none;
+			color: fontSpecialColor;
+		}
+		.main-frm .ct-group tr td {
+			border-left: none;
+		}
+		.main-frm .ct-group tr.odd td {
+			background: rgba(0, 0, 0, 0.06);
+			border-color: borderColor;
+		}
+		.main-frm .ct-group tr.even td {
+			background: none;
+			border-color: borderColor;
+		}
+		.text input,
+		.select select {
+			background: secondaryColor;
+			border: 1px solid borderColor;
+			color: fontColor;
+		}
+		.ct-box,
+		.ct-set,
+		.ct-group,
+		.frm-group {
+			border-color: borderColor;
 		}
 	}
 	else {
-		
+		body {
+            background: bgPlaceholder;
+        }
+        a:link,
+        a:visited,
+        .js_link {
+            color: fontSpecialColor;
+        }
+        .js_link {
+            border-color: borderColor;
+        }
+        /* menu bar restyling */
+        #brd-navlinks {
+            background: accentColor;
+        }
+		#brd-navlinks li.isactive {
+			background: fontSpecialColor;
+		}
+        #brd-announcement {
+            border-color: borderColor;
+            background: primaryColor;
+        }
+        #brd-announcement span[style="color:#2c3e50"] {
+            color: fontColor !important;	
+        }
+        #visit-links a,
+        #visit-links a:link,
+        #visit-links a:visited {
+            color: fontSpecialColor;
+        }
+        .main-head {
+            background: accentColor;
+			border-color: fontSpecialColor;
+        }
+        .main-subhead {
+            border-color: borderColor;
+        }
+        .item-summary {
+            background: secondaryColor;
+            color: fontColor;
+        }
+        .main-category {
+            background: primaryColor;
+            border-color: borderColor;
+        }
+		.main-item {
+			border-color: borderColor;
+		}
+		.main-content .sticky {
+			background: primaryColor;
+		}
+        .main-item * a {
+            color: fontSpecialColor;
+        }
+        .main-item .hn .item-status em {
+            color: accentColor !important;
+        }
+        li.info-topics,
+        li.info-topics strong,
+        li.info-posts,
+        li.info-posts strong,
+        li.info-lastpost,
+        div.item-subject,
+        li.info-replies strong,
+        li.info-views strong {
+            border: borderColor;
+            color: fontColor;
+        }
+        #brd-stats {
+            background: secondaryColor;
+            border-color: borderColor;
+            color: fontColor;
+        }
+        #brd-stats strong {
+            color: fontColor;
+        }
+        #brd-online {
+            background: primaryColor;
+            border-color: borderColor;
+            color: fontColor;
+        }
+        .main-content .icon {
+            background-image: statusPlaceholder !important;
+        }
+        li.info-replies,
+        li.info-views,
+        li.info-forum,
+        li.info-topics,
+        li.info-posts,
+        li.info-lastpost,
+        div.item-subject {
+            border-color: borderColor;
+        }
+        .main-foot {
+            border-color: borderColor;
+            background: primaryColor;
+            border-color: borderColor;
+            color: fontColor;
+			border-top: none;
+        }
+        .paging a,
+        .paging strong {
+            background: primaryColor;
+            border-color: secondaryColor;
+            color: fontSpecialColor;
+        }
+        .paging a:hover {
+            color: fontSpecialColor;
+            border-color: accentColor;
+        }
+        .paging span {
+            color: fontSpecialColor;
+        }
+        .posting a.newpost {
+            background: accentColor;
+            border-color: fontSpecialColor;
+        }
+        .main-content {
+            background: primaryColor;
+            border-color: borderColor;
+        }
+        #brd-qpost {
+            background: primaryColor;
+            color: fontColor;
+        }
+        .main-subhead a {
+            color: fontColor;
+        }
+        .required label span {
+            color: fontColor;
+        }
+        .main-subhead {
+            background: secondaryColor;
+        }
+        .post {
+            background: secondaryColor;
+            border-color: borderColor;
+			border-bottom: 0px;
+        }
+        .post * {
+            color: fontColor;
+        }
+        .post a {
+            color: fontSpecialColor;
+        }
+        .postbody {
+            background: primaryColor;
+			border-color: borderColor !important;
+        }
+        .posthead {
+            background: primaryColor;
+			border-color: borderColor !important;
+        }
+		.posthead .hn {
+			background: secondaryColor;
+			border-color: borderColor;
+		}
+        .player-btn {
+            border: solid 1px fontSpecialColor !important;
+            background: accentColor;
+        }
+        .post-options {
+            background: primaryColor;
+			border-color: borderColor !important;
+        }
+        .quotebox {
+            background-color: secondaryColor !important;
+            background-image: quoteboxImg !important;
+            outline: 1px solid borderColor!important;
+        }
+        .brd .entry-content .codebox {
+            background-color: secondaryColor !important;
+            background-image: codeboxImg !important;
+            outline: 1px solid borderColor;
+        }
+        .fancy_spoiler {
+            border-color: borderColor!important;
+        }
+        .fancy_spoiler_switcher {
+            background: secondaryColor;
+            border-color: borderColor !important;
+            color: fontColor;
+        }
+        .fancy_spoiler_switcher_header {
+            color: fontSpecialColor;
+        }
+        .fancy_spoiler_switcher .quotebox,
+        .fancy_spoiler_switcher code {
+            color: fontColor;
+            background-color: primaryColor !important;
+        }
+        .brd .postfoot .post-actions span {
+            padding-left: 10px;
+            padding-right: 10px;
+            background: secondaryColor;
+            border-color: borderColor;
+        }
+        .brd .postfoot .post-actions span:hover,
+        .brd .postfoot .post-actions span:focus,
+        .brd .postfoot .post-actions span:hover a,
+        .brd .postfoot .post-actions span:focus a {
+            border-color: accentColor;
+            color: accentColor;
+        }
+        .frm-buttons {
+            border-color: borderColor;
+        }
+        .sig-line {
+            border-color: borderColor;
+        }
+        .frm-buttons input {
+            padding-left: 12px;
+            padding-right: 12px;
+        }
+        .frm-buttons input span {
+            padding-right: 12px;
+        }
+        textarea,
+        input[type="text"],
+        input:not([title]) {
+            background: secondaryColor !important;
+            border-color: borderColor;
+            color: fontColor;
+        }
+        input[type="text"]:active,
+        input[type="text"]:focus,
+        input[type="password"]:active,
+        input[type="password"]:focus,
+        input[type="email"]:active,
+        input[type="email"]:focus,
+        input[type="url"]:active,
+        input[type="url"]:focus,
+        input[type="search"]:active,
+        input[type="search"]:focus,
+        input[type="number"]:active,
+        input[type="number"]:focus,
+        textarea:active,
+        textarea:focus {
+            border-color: borderColor;
+        }
+        #pun_bbcode_bar input[type=button].image,
+        #pun_bbcode_bar #pun_bbcode_button_smiles.image
+        #pun_bbcode_bar #pun_bbcode_button_fancy_spoiler.image {
+            background-color: secondaryColor;
+            border-color: borderColor;
+        }
+        .main-menu {
+            background: accentColor;
+        }
+        .main-menu .active a,
+        .admin-menu .active a {
+            border-color: fontSpecialColor;
+        }
+        .main-menu a:hover,
+        .main-menu a:active,
+        .main-menu a:focus,
+        .admin-menu a:hover,
+        .admin-menu a:active,
+        .admin-menu a:focus {
+            border-color: fontColor;
+        }
+        ul.data-list li,
+        ul.data-box li,
+        ul.data-list li,
+        ul.data-box li {
+            border: none;
+            color: fontColor;
+        }
+        .ct-box.error-box {
+            border-color: borderColor;
+            background: secondaryColor;
+        }
+        .ct-box span,
+        .error-list li span {
+            color: fontColor;
+        }
+        ul li strong {
+            color: fontSpecialColor;
+        }
+        .main-content .info-box {
+            background: #f0f0f0
+        }
+        .main-content .main-item .hn .posted-mark {
+            color: fontSpecialColor;
+        }
+        .user-ident .usertitle span {
+            color: fontColor;
+        }
+        label,
+        .aslabel,
+        .mf-set legend,
+        .ct-legend,
+        .ct-legend span,
+        .ct-legend cite,
+        .ct-legend strong {
+            color: fontColor;
+        }
+        .sig-demo {
+            color: fontColor;
+        }
+        .sig-demo a {
+            color: fontSpecialColor !important;
+        }
+        .crumb {
+            color: fontColor;
+        }
+        .crumb a {
+            color: fontSpecialColor;
+        }
+        #rules-content {
+            background: none;
+            border: none;
+            padding: 0px;
+        }
+        #rules-content div {
+            background: secondaryColor !important;
+            border: none !important;
+            border-left: 10px solid borderColor !important;
+            padding: 0px;
+        }
+        #rules-content * {
+            font-family: inherit !important;
+            color: fontColor;
+        }
+        .sf-set .text label span,
+        .sf-set .select label span,
+        .sf-set .aslabel span,
+        .mf-set legend span {
+            color: fontColor;
+        }
+        .mf-item label,
+        .ct-box .hn {
+            color: fontColor;
+        }
+        .content-options, .ct-options {
+            color: fontColor;
+        }
+        .main-content .info-box {
+            background: secondaryColor;
+            color: accentColor;
+        }
+        .main-content .info-box span {
+            color: fontColor;
+        }
+        li::marker {
+            color: fontSpecialColor
+        }
+        .ct-group table {
+            background: secondaryColor;
+            border-color: borderColor;
+            color: fontColor;
+        }
+
+        .ct-group table th {
+            background: secondaryColor;
+            color: fontSpecialColor;
+        }
+        .main-frm .ct-group tr.odd td {
+            border-color: borderColor;
+        }
+        .main-frm .ct-group tr.even td {
+            border-color: borderColor;
+        }
+        .text input,
+        .select select {
+            background: secondaryColor;
+            color: fontColor;
+        }
+        .ct-box,
+        .ct-set,
+        .ct-group,
+        .frm-group {
+            border-color: borderColor;
+        }
+		.ct-group table {
+			background: secondaryColor;
+			border-color: borderColor;
+			color: fontColor;
+		}
+		.ct-group table th {
+			background: secondaryColor;
+			border: none;
+			color: fontSpecialColor;
+		}
+		.main-frm .ct-group tr td {
+			border-left: none;
+		}
+		.main-frm .ct-group tr.odd td {
+			background: rgba(0, 0, 0, 0.06);
+			border-color: borderColor;
+		}
+		.main-frm .ct-group tr.even td {
+			background: none;
+			border-color: borderColor;
+		}
 	}
 	}
