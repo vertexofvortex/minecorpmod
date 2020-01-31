@@ -3,7 +3,7 @@
 @namespace    	https://vertexofvortex.github.io/minecorpmod
 @homepageURL  	https://github.com/vertexofvortex/MCDreloaded
 @updateURL 		https://raw.githubusercontent.com/vertexofvortex/minecorpmod/master/corpmod.user.css
-@version      	1.1.7
+@version      	1.1.8
 @license      	MIT
 @description  	Улучшенная тема для форума MineCorp. Имеет в арсенале множество твиков, позволяющих сделать внешний форума более презентабельным. Обеспечивает поддержку нескольких цветовых оформлений, в том числе и тёмной темы.
 @author       	vertexofvortex
@@ -19,8 +19,9 @@
 	"Mint": "mint",
  	"Latte": "latte",
 	"Kamikaze Letter": "kami",
-	"Mono Light": "monolight",
+	"Mono Bright": "monolight",
 	"Mono Dim": "monodim",
+	"Azimov": "azimov",
 	"Minimal": "minimal",
 	"The Hellwalker": "hellwalker",
 }
@@ -276,6 +277,9 @@
 			background-color: accentColor !important;
 			color: white;
 		}
+		.main-head {
+			border-color: accentColor !important;
+		}
 	}
 	if colorTheme == monodim {
 		accentColor = #313131
@@ -297,6 +301,9 @@
  		#brd-announcement span[style="background-color:#ffcc99"] {
 			background-color: accentColor !important;
 			color: white;
+		}
+		.main-head {
+			border-color: accentColor !important;
 		}
 	}
 	if colorTheme == nightblue {
@@ -470,6 +477,20 @@
 		quoteboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/quote.png)
 		codeboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/code.png)
 		overlayColor = hsla(0, 0%, 46%, .1)
+	}
+	if colorTheme == azimov {
+		accentColor = #ff7315
+		borderColor = #564e4e
+		primaryColor = #3a3535
+		secondaryColor = #232020
+		fontColor = #fff
+		fontSpecialColor = #f60
+		bgPlaceholder = black
+		bgPlaceholder = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/bg-old-dark.png)
+		statusPlaceholder = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/status.png)
+		quoteboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/quote.png)
+		codeboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/code.png)
+		overlayColor = rgba(0, 0, 0, .1)
 	}
 	
 	if newTheme {
