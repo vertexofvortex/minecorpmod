@@ -3,7 +3,7 @@
 @namespace    	https://vertexofvortex.github.io/minecorpmod
 @homepageURL  	https://github.com/vertexofvortex/MCDreloaded
 @updateURL 	https://raw.githubusercontent.com/vertexofvortex/minecorpmod/master/corpmod.user.css
-@version      	1.1.2
+@version      	1.1.3
 @license      	MIT
 @description  	Улучшенная тема для форума MineCorp. Имеет в арсенале множество твиков, позволяющих сделать внешний форума более презентабельным. Обеспечивает поддержку нескольких цветовых оформлений, в том числе и тёмной темы.
 @author       	vertexofvortex
@@ -23,6 +23,7 @@
 @var checkbox brdHighlightRemove "Убрать разноцветные выделения ссылок на доске объявлений" 0
 @var checkbox menuSocialsRemove "Скрыть кнопки Discord, ВКонтакте и поддержки в верхнем меню" 0
 @var checkbox fullwidthAvatars "Сделать аватары игроков полной ширины" 0
+@var checkbox removeAvatar "Убрать свой аватар в меню (вверху слева)" 0
 @var checkbox editorLargerFont "Увеличить шрифт в полях ввода (создание темы, ответа)" 0
 @var checkbox menuSticky	"Приклеить меню к верхней части экрана [DEV]" 0
 @var select	altLogo	"Логотип MineCorp" {
@@ -35,14 +36,29 @@
 }
 ==/UserStyle== */
 @-moz-document domain("forum.minecorp.ru") {
+	a.logo img {
+		display: none;
+	}
+	a.logo {
+		background-image: url(https://minecorp.ru/img/logo.png);
+		bcakground-position: center;
+		background-repeat: no-repeat;
+		width: 510px;
+		height: 145px;
+	}
 	/* TWEAKS */
 	/* announcement board hiding */
 	if brdRemove {
 		.announ {
 			display: none;
 		}
+		a.logo {
+			min-width: 100%;
+			background-position: center !important;
+			margin-bottom: 20px;
+		}
 	}
-	/* announcement board disable links highlight*/
+	/* announcement board disable links highlights */
 	if brdHighlightRemove {
 		div#brd-announcement div.content p span a span strong span,
 		div#brd-announcement div.content p span span strong span {
@@ -92,9 +108,6 @@
 			height: 145px;
 			background-repeat: no-repeat;
 		}
-		a.logo img {
-			display: none;
-		}
 	}
 	if altLogo == alternative1 {
 		a.logo {
@@ -102,9 +115,6 @@
 			width: 510px;
 			height: 145px;
 			background-repeat: no-repeat;
-		}
-		a.logo img {
-			display: none;
 		}
 	}
 	if wideforum {
@@ -123,7 +133,11 @@
 			padding-top: 35px;
 		}
 	}
-	
+	if removeAvatar {
+		#topavatar, img#topavatar {
+			display: none;
+		}
+	}
 	/* COLOR THEMES */
 	if colorTheme == original {
 		accentColor = default
@@ -238,8 +252,16 @@
 		.fancy_spoiler {
 			color: fontColor !important;
 		}
-		.fancy_spoiler_switcher .quotebox, .fancy_spoiler_switcher code {
-			background-color: black !important;
+		.brd .entry-content .quotebox {
+			background-color: accentColor !important;
+		}
+		#brd-announcement span[style="background-color:#ccffcc"],
+ 		#brd-announcement span[style="background-color:#99ccff"],
+ 		#brd-announcement span[style="background-color:#ffccff"],
+ 		#brd-announcement span[style="background-color:#ffcccc"],
+ 		#brd-announcement span[style="background-color:#ffcc99"] {
+			background-color: accentColor !important;
+			color: fontColor;
 		}
 	}
 	
@@ -295,6 +317,12 @@
 		#visit-links a:link,
 		#visit-links a:visited {
 			color: fontSpecialColor;
+		}
+		#visit-links span#visit-pun_pm a strong {
+			background: #a70e0e !important;
+			padding: 2px;
+			border-radius: 2px;
+			color: white;
 		}
 		/* main forums restyling */
 		.main-head {
@@ -726,6 +754,30 @@
 		.frm-group {
 			border-color: borderColor;
 		}
+		.pun_pm_msg .td1 {
+			color: fontColor;
+		}
+		.pun_pm_msg table td {
+			color: fontColor;
+		}
+		.pun_pm_msg p,
+ 		.pun_pm_msg {
+			color: fontColor;
+		}
+		#brd-crumbs-top .crumblast a,
+		#brd-crumbs-top .crumblast a:hover {
+			color: fontColor;
+		}
+		.pun-pm-ct-box {
+			border: none;
+		}
+		.pun_pm_list {
+			background: secondaryColor;
+		}
+		.main-frm .ct-group td {
+			background: none;
+			border-color: borderColor;
+		}
 	}
 	else {
 		body {
@@ -1120,6 +1172,30 @@
 			border-color: borderColor;
 		}
 		.main-frm .ct-group tr.even td {
+			background: none;
+			border-color: borderColor;
+		}
+		.pun_pm_msg .td1 {
+			color: fontColor;
+		}
+		.pun_pm_msg table td {
+			color: fontColor;
+		}
+		.pun_pm_msg p,
+ 		.pun_pm_msg {
+			color: fontColor;
+		}
+		#brd-crumbs-top .crumblast a,
+		#brd-crumbs-top .crumblast a:hover {
+			color: fontColor;
+		}
+		.pun-pm-ct-box {
+			border: none;
+		}
+		.pun_pm_list {
+			background: secondaryColor;
+		}
+		.main-frm .ct-group td {
 			background: none;
 			border-color: borderColor;
 		}
