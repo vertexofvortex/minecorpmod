@@ -3,7 +3,7 @@
 @namespace    	https://vertexofvortex.github.io/minecorpmod
 @homepageURL  	https://github.com/vertexofvortex/MCDreloaded
 @updateURL 		https://raw.githubusercontent.com/vertexofvortex/minecorpmod/master/corpmod.user.css
-@version      	1.1.6
+@version      	1.1.7
 @license      	MIT
 @description  	Улучшенная тема для форума MineCorp. Имеет в арсенале множество твиков, позволяющих сделать внешний форума более презентабельным. Обеспечивает поддержку нескольких цветовых оформлений, в том числе и тёмной темы.
 @author       	vertexofvortex
@@ -15,11 +15,14 @@
 	"Greendark": "greendark",
 	"Greenlight": "greenlight",
 	"Midnight Blue": "nightblue",
+	"Plum": "plum",
+	"Mint": "mint",
  	"Latte": "latte",
 	"Kamikaze Letter": "kami",
-	"The Hellwalker": "hellwalker",
-	"Mono": "mono",
+	"Mono Light": "monolight",
+	"Mono Dim": "monodim",
 	"Minimal": "minimal",
+	"The Hellwalker": "hellwalker",
 }
 @var checkbox brdRemove "Скрыть доску объявлений" 0
 @var checkbox wideforum "Сделать форум шире" 0
@@ -252,7 +255,7 @@
 		codeboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/code.png)
 		overlayColor = rgba(198, 198, 198, .1)
 	}
-	if colorTheme == mono {
+	if colorTheme == monolight {
 		accentColor = #4f4f4f
 		borderColor = #c3c3c3
 		primaryColor = #d9d9d9
@@ -264,6 +267,28 @@
 		quoteboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/quote.png)
 		codeboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/code.png)
 		overlayColor = rgba(198, 198, 198, .1)
+		
+		#brd-announcement span[style="background-color:#ccffcc"],
+ 		#brd-announcement span[style="background-color:#99ccff"],
+ 		#brd-announcement span[style="background-color:#ffccff"],
+ 		#brd-announcement span[style="background-color:#ffcccc"],
+ 		#brd-announcement span[style="background-color:#ffcc99"] {
+			background-color: accentColor !important;
+			color: white;
+		}
+	}
+	if colorTheme == monodim {
+		accentColor = #313131
+		borderColor = #454545
+		primaryColor = #545454
+		secondaryColor = #545454
+		fontColor = #b2b2b2
+		fontSpecialColor = #fff
+		bgPlaceholder = hsl(0, 0%, 14%)
+		statusPlaceholder = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/status.png)
+		quoteboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/quote.png)
+		codeboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/code.png)
+		overlayColor = rgba(49, 49, 49, .1)
 		
 		#brd-announcement span[style="background-color:#ccffcc"],
  		#brd-announcement span[style="background-color:#99ccff"],
@@ -385,8 +410,9 @@
 			display: none;
 		}
 		#brd-online {
-			border-top: 1px solid borderColor;
-			border-radius: 6px !important;
+			background: none;
+			border: none;
+			box-shadow: none !important;
 		}
 		.entry-content {
 			min-height: unset;
@@ -409,6 +435,41 @@
 		.entry-content {
 			padding-bottom: 0px;
 		}
+	}
+	if colorTheme == plum {
+		accentColor = linear-gradient(135deg, #667eea 0%, #764ba2 100%)
+		borderColor = #321945
+		primaryColor = #130a1a
+		secondaryColor = #251434
+		fontColor = #bc99d7
+		fontSpecialColor = #ad72e9
+		bgPlaceholder = #150f1a
+		statusPlaceholder = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/status.png)
+		quoteboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/quote.png)
+		codeboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/code.png)
+		overlayColor = rgba(46, 46, 46, .1)
+		
+		#brd-announcement span[style="background-color:#ccffcc"],
+ 		#brd-announcement span[style="background-color:#99ccff"],
+ 		#brd-announcement span[style="background-color:#ffccff"],
+ 		#brd-announcement span[style="background-color:#ffcccc"],
+ 		#brd-announcement span[style="background-color:#ffcc99"] {
+			background-color: fontSpecialColor !important;
+			color: white;
+		}
+	}
+	if colorTheme == mint {
+		accentColor = #67a876
+		borderColor = #484141
+		primaryColor = #4d4646
+		secondaryColor = #5b5656
+		fontColor = #f5eaea
+		fontSpecialColor = #65c47b
+		bgPlaceholder = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/bg-old-dark.png)
+		statusPlaceholder = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/status.png)
+		quoteboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/quote.png)
+		codeboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/code.png)
+		overlayColor = hsla(0, 0%, 46%, .1)
 	}
 	
 	if newTheme {
