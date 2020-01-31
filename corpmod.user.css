@@ -3,7 +3,7 @@
 @namespace    	https://vertexofvortex.github.io/minecorpmod
 @homepageURL  	https://github.com/vertexofvortex/MCDreloaded
 @updateURL 	https://raw.githubusercontent.com/vertexofvortex/minecorpmod/master/corpmod.user.css
-@version      	1.1.0
+@version      	1.1.2
 @license      	MIT
 @description  	Улучшенная тема для форума MineCorp. Имеет в арсенале множество твиков, позволяющих сделать внешний форума более презентабельным. Обеспечивает поддержку нескольких цветовых оформлений, в том числе и тёмной темы.
 @author       	vertexofvortex
@@ -15,6 +15,7 @@
 	"Greendark": "greendark",
 	"Midnight Blue": "nightblue",
  	"Latte": "latte",
+	"Visual": "visual",
 	"The Hellwalker": "hellwalker",
 }
 @var checkbox brdRemove "Скрыть доску объявлений" 0
@@ -46,6 +47,7 @@
 		div#brd-announcement div.content p span a span strong span,
 		div#brd-announcement div.content p span span strong span {
 			background: none !important;
+			color: fontSpecialColor;
 		}
 	}
 	/* menu-bar social buttons removal */
@@ -88,6 +90,7 @@
 			background: url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/old-logo.png);
 			width: 510px;
 			height: 145px;
+			background-repeat: no-repeat;
 		}
 		a.logo img {
 			display: none;
@@ -98,6 +101,7 @@
 			background: url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/logo-alt1.png);
 			width: 510px;
 			height: 145px;
+			background-repeat: no-repeat;
 		}
 		a.logo img {
 			display: none;
@@ -140,12 +144,40 @@
 		primaryColor = #2c2521
 		secondaryColor = hsl(25, 20%, 17%)
 		fontColor = #dbc1ac
-		fontSpecialColor = #ece0d1
+		fontSpecialColor = hsl(27, 76%, 72%)
 		bgPlaceholder = #25211b
 		statusPlaceholder = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/status.png)
 		quoteboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/quote.png)
 		codeboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/code.png)
 		overlayColor = hsla(0, 0%, 27%, .1)
+	}
+	if colorTheme == visual {
+		accentColor = #2f5b9d
+		borderColor = #434346
+		primaryColor = #1e1e1e
+		secondaryColor = #333337
+		fontColor = #bababa
+		fontSpecialColor = #128b60
+		bgPlaceholder = hsl(0, 0%, 12%)
+		statusPlaceholder = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/status.png)
+		quoteboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/quote.png)
+		codeboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/code.png)
+		overlayColor = rgba(60, 60, 60, .1)
+		
+		.item-subject span.modlist a {
+			color: fontColor;
+		}
+		#brd-visit #visit-links span a {
+			color: accentColor;
+		}
+		#brd-announcement span[style="background-color:#ccffcc"],
+ 		#brd-announcement span[style="background-color:#99ccff"],
+ 		#brd-announcement span[style="background-color:#ffccff"],
+ 		#brd-announcement span[style="background-color:#ffcccc"],
+ 		#brd-announcement span[style="background-color:#ffcc99"] {
+			background-color: accentColor !important;
+			color: fontColor;
+		}
 	}
 	if colorTheme == greendark {
 		accentColor = #639146
@@ -174,21 +206,29 @@
 		overlayColor = rgba(0, 0, 0, .1)
 	}
 	if colorTheme == hellwalker {
-		accentColor = #a32200
-		borderColor = #a32200
+		accentColor = #a11515
+		borderColor = #420e00
 		primaryColor = #141414
 		secondaryColor = #1e1e1e
 		fontColor = white
-		fontSpecialColor = #ff3500
-		bgPlaceholder = #170d20
+		fontSpecialColor = #ed4417
+		bgPlaceholder = url(https://raw.githubusercontent.com/vertexofvortex/minecorpmod/master/images/thehellwalker.jpg)
 		statusPlaceholder = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/status.png)
 		quoteboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/quote.png)
 		codeboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/code.png)
-		overlayColor = rgba(102, 0, 255, .06)
+		overlayColor = rgba(78, 78, 78, .06)
 		
-		.brd .entry-content .quotebox {
-			background-color: accentColor !important;
-			border-color: borderColor;
+		body {
+			background-attachment: fixed !important;
+		}
+		a.logo {
+			background: url(https://raw.githubusercontent.com/vertexofvortex/minecorpmod/master/images/logo-thehellwalker.png);
+			background-repeat: no-repeat;
+			width: 510px;
+			height: 145px;
+		}
+		a.logo img {
+			display: none;
 		}
 		.fancy_spoiler_switcher {
 			background: accentColor !important;
@@ -345,6 +385,9 @@
 			background: primaryColor;
 			border-color: secondaryColor;
 			color: fontSpecialColor;
+		}
+		.posting {
+			color: fontColor;
 		}
 		.paging a:hover {
 			color: fontSpecialColor;
