@@ -1,25 +1,29 @@
 /* ==UserStyle==
-@name         MineCorp MOD
-@namespace    https://vertexofvortex.github.io/minecorpmod
-@homepageURL  https://github.com/vertexofvortex/MCDreloaded
-@version      1.0.10
-@license      Other
-@description  Улучшенная тема для форума MineCorp. Имеет в арсенале множество твиков, позволяющих сделать внешний форума более презентабельным. Обеспечивает поддержку нескольких цветовых оформлений, в том числе и тёмной темы.
-@author       vertexofvortex
-@preprocessor stylus
+@name         	MineCorp MOD
+@namespace    	https://vertexofvortex.github.io/minecorpmod
+@homepageURL  	https://github.com/vertexofvortex/MCDreloaded
+@updateURL 		https://raw.githubusercontent.com/vertexofvortex/minecorpmod/master/corpmod.user.css
+@version      	1.1.0
+@license      	MIT
+@description  	Улучшенная тема для форума MineCorp. Имеет в арсенале множество твиков, позволяющих сделать внешний форума более презентабельным. Обеспечивает поддержку нескольких цветовых оформлений, в том числе и тёмной темы.
+@author       	vertexofvortex
+@preprocessor 	stylus
 
 @var checkbox newTheme "Улучшенная тема" 0
-@var select colorTheme "Цветовая тема" {
+@var select colorTheme "Цветовая схема" {
   	"Стандартная*": "original",
-	"Grayscale": "grayscale",
- 	"Midnight Blue": "nightblue",
+	"Greendark": "greendark",
+	"Midnight Blue": "nightblue",
+ 	"Latte": "latte",
+	"The Hellwalker": "hellwalker",
 }
 @var checkbox brdRemove "Скрыть доску объявлений" 0
+@var checkbox wideforum "Сделать форум шире" 0
 @var checkbox brdHighlightRemove "Убрать разноцветные выделения ссылок на доске объявлений" 0
 @var checkbox menuSocialsRemove "Скрыть кнопки Discord, ВКонтакте и поддержки в верхнем меню" 0
 @var checkbox fullwidthAvatars "Сделать аватары игроков полной ширины" 0
 @var checkbox editorLargerFont "Увеличить шрифт в полях ввода (создание темы, ответа)" 0
-@var checkbox menuSticky	"Приклеить меню к верхней части экрана [!] [dev]" 0
+@var checkbox menuSticky	"Приклеить меню к верхней части экрана [DEV]" 0
 @var select	altLogo	"Логотип MineCorp" {
 	"Стандартный*": "original",
 	"Классика":	"classic",
@@ -99,6 +103,11 @@
 			display: none;
 		}
 	}
+	if wideforum {
+		#brd-wrap {
+			max-width: 80%;
+		}
+	}
 	if menuSticky {
 		#brd-navlinks {
 			position: fixed;
@@ -114,7 +123,7 @@
 	/* COLOR THEMES */
 	if colorTheme == original {
 		accentColor = default
-		borderColor = default
+		borderColor = #ccc
 		primaryColor = default
 		secondaryColor = default
 		fontColor = default
@@ -125,7 +134,20 @@
 		codeboxImg = default
 		overlayColor = rgba(198, 198, 198, .1)
 	}
-	if colorTheme == grayscale {
+	if colorTheme == latte {
+		accentColor = #967259
+		borderColor = #474747
+		primaryColor = #2c2521
+		secondaryColor = hsl(25, 20%, 17%)
+		fontColor = #dbc1ac
+		fontSpecialColor = #ece0d1
+		bgPlaceholder = #25211b
+		statusPlaceholder = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/status.png)
+		quoteboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/quote.png)
+		codeboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/code.png)
+		overlayColor = hsla(0, 0%, 27%, .1)
+	}
+	if colorTheme == greendark {
 		accentColor = #639146
 		borderColor = #474747
 		primaryColor = #2e2e2e
@@ -150,6 +172,35 @@
 		quoteboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/quote.png)
 		codeboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/code.png)
 		overlayColor = rgba(0, 0, 0, .1)
+	}
+	if colorTheme == hellwalker {
+		accentColor = #a32200
+		borderColor = #a32200
+		primaryColor = #141414
+		secondaryColor = #1e1e1e
+		fontColor = white
+		fontSpecialColor = #ff3500
+		bgPlaceholder = #170d20
+		statusPlaceholder = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/status.png)
+		quoteboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/quote.png)
+		codeboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/code.png)
+		overlayColor = rgba(102, 0, 255, .06)
+		
+		.brd .entry-content .quotebox {
+			background-color: accentColor !important;
+			border-color: borderColor;
+		}
+		.fancy_spoiler_switcher {
+			background: accentColor !important;
+			border-color: fontSpecialColor !important;
+		}
+		.fancy_spoiler_switcher_header,
+		.fancy_spoiler {
+			color: fontColor !important;
+		}
+		.fancy_spoiler_switcher .quotebox, .fancy_spoiler_switcher code {
+			background-color: black !important;
+		}
 	}
 	
 	if newTheme {
@@ -371,8 +422,8 @@
 			width: 180px;
 			padding: 8px 0px 8px 0px;
 			border-radius: 1px*50%;
-			border: solid 1px #308c26 !important;
-			background: #308c25;
+			border: solid 1px fontSpecialColor !important;
+			background: accentColor;
 		}
 		.post-options {
 			background: primaryColor;
