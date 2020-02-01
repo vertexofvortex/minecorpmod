@@ -1,4 +1,5 @@
 # MineCorp MOD
+![](https://raw.githubusercontent.com/vertexofvortex/minecorpmod/master/images/logo.png)
 [![Установить с помощью Stylus](https://img.shields.io/badge/Install%20directly%20with-Stylus-00adad.svg)](https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/corpmod.user.css)
 
 ## Изменения, вносимые стилем MineCorp MOD в работу форума
