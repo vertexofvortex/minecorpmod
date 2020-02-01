@@ -65,7 +65,7 @@
 	
 	Если обновить стиль описанным выше методом не получилось, просто перейдите по прямой ссылке на стиль (кнопка вверху этой страницы либо ищите в теме на форуме).
 ## Авторы
-![alt text](https://minotar.net/cube/vertexofvortex/100.png) | ![alt text](https://minotar.net/cube/Johnyheinz/100.png) | ![alt text](https://minotar.net/cube/TheKamikadza/100.png)
+![alt text](https://minotar.net/cube/vertexofvortex/150.png) | ![alt text](https://minotar.net/cube/Johnyheinz/150.png) | ![alt text](https://minotar.net/cube/TheKamikadza/150.png)
 --- | --- | ---
 **vertexofvortex** | **Johnyheinz** | **TheKamikadza**
 Графический дизайнер, веб-разработчик. | Трайхард, майнкрафтер, гриндер, технарь. | Непризнанный лидер. Пока что непризнанный.
