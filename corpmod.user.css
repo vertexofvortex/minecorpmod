@@ -3,9 +3,9 @@
 @namespace    	https://vertexofvortex.github.io/minecorpmod
 @homepageURL  	https://github.com/vertexofvortex/MCDreloaded
 @updateURL 		https://raw.githubusercontent.com/vertexofvortex/minecorpmod/master/corpmod.user.css
-@version      	1.1.8
+@version      	1.1.9
 @license      	MIT
-@description  	Улучшенная тема для форума MineCorp. Имеет в арсенале множество твиков, позволяющих сделать внешний форума более презентабельным. Обеспечивает поддержку нескольких цветовых оформлений, в том числе и тёмной темы.
+@description  	Улучшенная тема для форума MineCorp. Имеет в арсенале множество твиков, позволяющих сделать внешний форума более презентабельным. Обеспечивает поддержку нескольких цветовых оформлений, в том числе и тёмных.
 @author       	vertexofvortex
 @preprocessor 	stylus
 
@@ -22,9 +22,11 @@
 	"Mono Bright": "monolight",
 	"Mono Dim": "monodim",
 	"Azimov": "azimov",
+	"Neat": "neat",
 	"Minimal": "minimal",
 	"The Hellwalker": "hellwalker",
 }
+@var color userAccentColor "Свой акцентный цвет (только для Neat)" #16ce91
 @var checkbox brdRemove "Скрыть доску объявлений" 0
 @var checkbox wideforum "Сделать форум шире" 0
 @var checkbox brdHighlightRemove "Убрать выделения ссылок на доске объявлений" 0
@@ -51,7 +53,7 @@
 	}
 	a.logo {
 		background-image: url(https://minecorp.ru/img/logo.png);
-		bcakground-position: center;
+		background-position: center;
 		background-repeat: no-repeat;
 		width: 510px;
 		height: 145px;
@@ -188,19 +190,30 @@
 		quoteboxImg = default
 		codeboxImg = default
 		overlayColor = rgba(198, 198, 198, .1)
+		boxShadow = 0px 5px 5px 0px rgba(0, 0, 0, 0.1)
 	}
 	if colorTheme == latte {
-		accentColor = #967259
-		borderColor = #474747
-		primaryColor = #2c2521
-		secondaryColor = hsl(25, 20%, 17%)
-		fontColor = #dbc1ac
-		fontSpecialColor = hsl(27, 76%, 72%)
-		bgPlaceholder = #25211b
-		statusPlaceholder = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/status.png)
+		accentColor = #775a46
+		borderColor = #9f8a69
+		primaryColor = #e6ba8c
+		secondaryColor = #e5bea4
+		fontColor = #3b1b06
+		fontSpecialColor = #92440a
+		bgPlaceholder = #dfc6b2
+		statusPlaceholder = default
 		quoteboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/quote.png)
 		codeboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/code.png)
 		overlayColor = hsla(0, 0%, 27%, .1)
+		boxShadow = none
+		
+		#brd-announcement span[style="background-color:#ccffcc"],
+ 		#brd-announcement span[style="background-color:#99ccff"],
+ 		#brd-announcement span[style="background-color:#ffccff"],
+ 		#brd-announcement span[style="background-color:#ffcccc"],
+ 		#brd-announcement span[style="background-color:#ffcc99"] {
+			background-color: accentColor !important;
+			color: bgPlaceholder;
+		}
 	}
 	if colorTheme == kami {
 		accentColor = #2f5b9d
@@ -214,6 +227,7 @@
 		quoteboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/quote.png)
 		codeboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/code.png)
 		overlayColor = rgba(60, 60, 60, .1)
+		boxShadow = 0px 5px 5px 0px rgba(0, 0, 0, 0.1)
 		
 		.item-subject span.modlist a {
 			color: fontColor;
@@ -242,6 +256,7 @@
 		quoteboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/quote.png)
 		codeboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/code.png)
 		overlayColor = rgba(0, 0, 0, .1)
+		boxShadow = 0px 5px 5px 0px rgba(0, 0, 0, 0.1)
 	}
 	if colorTheme == greenlight {
 		accentColor = #639146
@@ -255,6 +270,7 @@
 		quoteboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/quote.png)
 		codeboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/code.png)
 		overlayColor = rgba(198, 198, 198, .1)
+		boxShadow = 0px 5px 5px 0px rgba(0, 0, 0, 0.1)
 	}
 	if colorTheme == monolight {
 		accentColor = #4f4f4f
@@ -268,6 +284,7 @@
 		quoteboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/quote.png)
 		codeboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/code.png)
 		overlayColor = rgba(198, 198, 198, .1)
+		boxShadow = 0px 5px 5px 0px rgba(0, 0, 0, 0.1)
 		
 		#brd-announcement span[style="background-color:#ccffcc"],
  		#brd-announcement span[style="background-color:#99ccff"],
@@ -292,7 +309,8 @@
 		statusPlaceholder = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/status.png)
 		quoteboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/quote.png)
 		codeboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/code.png)
-		overlayColor = rgba(49, 49, 49, .1)
+		overlayColor = hsla(0, 0%, 43%, .1)
+		boxShadow = 0px 5px 5px 0px rgba(0, 0, 0, 0.1)
 		
 		#brd-announcement span[style="background-color:#ccffcc"],
  		#brd-announcement span[style="background-color:#99ccff"],
@@ -318,6 +336,7 @@
 		quoteboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/quote.png)
 		codeboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/code.png)
 		overlayColor = rgba(0, 0, 0, .1)
+		boxShadow = 0px 5px 5px 0px rgba(0, 0, 0, 0.1)
 	}
 	if colorTheme == hellwalker {
 		accentColor = #a11515
@@ -331,6 +350,7 @@
 		quoteboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/quote.png)
 		codeboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/code.png)
 		overlayColor = rgba(78, 78, 78, .06)
+		boxShadow = 0px 5px 5px 0px rgba(255, 0, 0, .1)
 		
 		body {
 			background-attachment: fixed !important;
@@ -377,6 +397,7 @@
 		quoteboxImg = default
 		codeboxImg = default
 		overlayColor = rgba(198, 198, 198, .1)
+		boxShadow = 0px 5px 5px 0px rgba(0, 0, 0, 0.1)
 		
 		#brd-announcement {
 			display: none;
@@ -455,6 +476,7 @@
 		quoteboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/quote.png)
 		codeboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/code.png)
 		overlayColor = rgba(46, 46, 46, .1)
+		boxShadow = 0px 5px 5px 0px rgba(0, 0, 0, 0.1)
 		
 		#brd-announcement span[style="background-color:#ccffcc"],
  		#brd-announcement span[style="background-color:#99ccff"],
@@ -467,8 +489,8 @@
 	}
 	if colorTheme == mint {
 		accentColor = #67a876
-		borderColor = #484141
-		primaryColor = #4d4646
+		borderColor = #383333
+		primaryColor = #433d3d
 		secondaryColor = #5b5656
 		fontColor = #f5eaea
 		fontSpecialColor = #65c47b
@@ -477,20 +499,71 @@
 		quoteboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/quote.png)
 		codeboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/code.png)
 		overlayColor = hsla(0, 0%, 46%, .1)
+		boxShadow = none
 	}
 	if colorTheme == azimov {
 		accentColor = #ff7315
-		borderColor = #564e4e
-		primaryColor = #3a3535
-		secondaryColor = #232020
-		fontColor = #fff
-		fontSpecialColor = #f60
-		bgPlaceholder = black
-		bgPlaceholder = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/bg-old-dark.png)
+		borderColor = #ff7315
+		primaryColor = #ececec
+		secondaryColor = #d9d9d9
+		fontColor = #242424
+		fontSpecialColor = #e86914
+		bgPlaceholder = #242424
+		statusPlaceholder = default
+		quoteboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/quote.png)
+		codeboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/code.png)
+		overlayColor = none
+		boxShadow = 0px 3px 1px 0px rgba(0, 0, 0, 0.1)
+	}
+	if colorTheme == neat {
+		accentColor = #0a0a0a
+		borderColor = #0a0a0a
+		primaryColor = #0a0a0a
+		secondaryColor = #0a0a0a
+		fontColor = white
+		fontSpecialColor = userAccentColor
+		bgPlaceholder = hsl(0, 0%, 7%)
 		statusPlaceholder = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/status.png)
 		quoteboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/quote.png)
 		codeboxImg = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/code.png)
-		overlayColor = rgba(0, 0, 0, .1)
+		overlayColor = none
+		boxShadow = none
+		
+		.fancy_spoiler_switcher {
+			background: fontSpecialColor !important;
+			border-color: fontSpecialColor !important;
+		}
+		.fancy_spoiler_switcher_header,
+		.fancy_spoiler {
+			color: fontColor !important;
+		}
+		.brd .entry-content .quotebox {
+			background-color: fontSpecialColor !important;
+		}
+		.brd .entry-content .codebox {
+			border-color: fontSpecialColor !important;
+		}
+		#brd-announcement span[style="background-color:#ccffcc"],
+ 		#brd-announcement span[style="background-color:#99ccff"],
+ 		#brd-announcement span[style="background-color:#ffccff"],
+ 		#brd-announcement span[style="background-color:#ffcccc"],
+ 		#brd-announcement span[style="background-color:#ffcc99"] {
+			background-color: fontSpecialColor !important;
+			color: accentColor;
+		}
+		input[type="text"], input[type="password"], input[type="email"], input[type="url"], input[type="number"], input[type="search"], textarea {
+			border-color: fontSpecialColor !important;
+			color: fontSpecialColor !important;
+		}
+		#pun_bbcode_bar input[type=button].image,
+		#pun_bbcode_bar #pun_bbcode_button_smiles.image
+		#pun_bbcode_bar #pun_bbcode_button_fancy_spoiler.image {
+			background-color: fontSpecialColor !important;
+			border-color: fontSpecialColor !important;
+		}
+		.main-head {
+			border: 0px !important;
+		}
 	}
 	
 	if newTheme {
@@ -508,7 +581,7 @@
 		}
 		/* menu bar restyling */
 		#brd-navlinks {
-			box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1);
+			box-shadow: boxShadow;
 			background: accentColor;
 		}
 		#brd-navlinks li:hover,
@@ -530,7 +603,7 @@
 		#brd-announcement {
 			border: borderColor 1px solid;
 			border-radius: 6px;
-			box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1);
+			box-shadow: boxShadow;
 			background: secondaryColor;
 		}
 		div#brd-announcement div.content p span a span strong span,
@@ -563,12 +636,12 @@
 			border-color: borderColor;
 		}
 		.item-summary {
-			box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1);
+			box-shadow:boxShadow;
 			background: secondaryColor;
 			color: fontColor;
 		}
 		.main-category {
-			box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1);
+			box-shadow: boxShadow;
 			border-radius: 0 0 6px 6px;
 			background: primaryColor;
 			border-color: borderColor;
@@ -580,7 +653,7 @@
 			color: fontSpecialColor;
 		}
 		.main-item .hn .item-status em {
-			color: accentColor !important;
+			color: fontSpecialColor !important;
 		}
 		li.info-topics,
 		li.info-topics strong,
@@ -595,7 +668,7 @@
 		}
 		#brd-stats {
 			border-radius: 6px 6px 0 0;
-			box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1);
+			box-shadow: boxShadow;
 			background: secondaryColor;
 			border-color: borderColor;
 			color: fontColor;
@@ -605,14 +678,14 @@
 		}
 		#brd-online {
 			border-radius: 0 0 6px 6px;
-			box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1);
+			box-shadow: boxShadow;
 			background: primaryColor;
 			border-color: borderColor;
 			color: fontColor;
 		}
 		/* in-forum restyling */
 		.main-content {
-			box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1);
+			box-shadow: boxShadow;
 		}
 		.main-content .icon {
 			background-image: statusPlaceholder !important;
@@ -627,7 +700,7 @@
 			border-color: borderColor;
 		}
 		.main-foot {
-			box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1);
+			box-shadow: boxShadow;
 			border-top: 1px solid borderColor;
 			border-radius: 6px;
 			margin-top: 6px;
@@ -660,7 +733,7 @@
 			border-color: fontSpecialColor;
 		}
 		.item-summary {
-			box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1);
+			box-shadow: boxShadow;
 		}
 		.main-content .sticky {
 			background: none;
@@ -672,7 +745,7 @@
 		}
 		#brd-qpost {
 			border-radius: 0 0 6px 6px;
-			box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1);
+			box-shadow: boxShadow;
 			background: primaryColor;
 			color: fontColor;
 		}
@@ -1063,7 +1136,7 @@
             color: fontSpecialColor;
         }
         .main-item .hn .item-status em {
-            color: accentColor !important;
+            color: fontSpecialColor !important;
         }
         li.info-topics,
         li.info-topics strong,
