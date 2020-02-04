@@ -3,7 +3,7 @@
 @namespace    	https://vertexofvortex.github.io/minecorpmod
 @homepageURL  	https://github.com/vertexofvortex/MCDreloaded
 @updateURL 		https://raw.githubusercontent.com/vertexofvortex/minecorpmod/master/corpmod.user.css
-@version      	1.1.9
+@version      	1.1.10
 @license      	MIT
 @description  	Улучшенная тема для форума MineCorp. Имеет в арсенале множество твиков, позволяющих сделать внешний форума более презентабельным. Обеспечивает поддержку нескольких цветовых оформлений, в том числе и тёмных.
 @author       	vertexofvortex
@@ -26,6 +26,7 @@
 	"Minimal": "minimal",
 	"The Hellwalker": "hellwalker",
 }
+@var range borderRadius "Степень закругления углов" [6, 1, 14, 1, "px"]
 @var color userAccentColor "Свой акцентный цвет (только для Neat)" #16ce91
 @var checkbox brdRemove "Скрыть доску объявлений" 0
 @var checkbox wideforum "Сделать форум шире" 0
@@ -35,15 +36,19 @@
 @var checkbox blurAvatars "Размыть все аватары игроков (может не работать в некоторых браузерах)" 0
 @var checkbox hideAvatars "Скрыть все аватары игроков" 0
 @var checkbox hideSignatures "Скрыть все подписи игроков (используйте вместе с пред. опцией для сверхкомпактного вида форума)" 0
+@var checkbox hidePlayerbtn "Скрыть кнопки \"Профиль в игре\"" 0
 @var checkbox removeAvatar "Убрать свой аватар из верхнего меню (слева)" 0
 @var checkbox editorLargerFont "Увеличить шрифт в полях ввода (создание темы, ответа)" 0
-@var checkbox menuSticky	"Приклеить меню к верхней части экрана [DEV]" 0
+@var checkbox menuSticky "Приклеить меню к верхней части экрана [DEV]" 0
+@var checkbox hideWidget "Спрятать виджет ВКонтакте" 0
+@var checkbox fixFonts "Фикс корявого шрифта (обычно при установленной Helvetica)" 0
 @var select	altLogo	"Логотип MineCorp" {
 	"Стандартный*": "original",
 	"Классика":	"classic",
-	"Альтернативный": "alternative1"
+	"Альтернативный": "alternative1",
+	"Альтернативный белый": "alternative2"
 }
-
+@var checkbox hideBadges "Отключить заслуженные бэйджи пользователей" 0
 @var checkbox conflictsRemove "ПСОИБиСАГО" 0
 }
 ==/UserStyle== */
@@ -58,8 +63,8 @@
 		width: 510px;
 		height: 145px;
 	}
-	a[title="Перейти в профиль пользователя vertexofvortex"]:after,
- 	a[title="Перейти в профиль пользователя TheKamikadza"]:after,
+	a[href="https://forum.minecorp.ru/profile.php?id=4212"]:after,
+ 	a[href="https://forum.minecorp.ru/profile.php?id=35"]:after,
 	a[title="Перейти в профиль пользователя Рэтчет"]:after {
 		content: "MC MOD";
 		background: #dd831d;
@@ -69,6 +74,20 @@
 		color: white;
 		font-size: 0.75em;
 		white-space: nowrap;
+	}
+	a[href="https://forum.minecorp.ru/profile.php?id=9530"]:after {
+		content: "MC MEMES";
+		background: #d71010;
+		padding: 2px;
+		margin-left: 3px;
+		border-radius: 2px;
+		color: white;
+		font-size: 0.75em;
+		white-space: nowrap;
+	}
+	#brd-navlinks a:after,
+ 	.modlist a:after{
+		display: none;
 	}
 	/* TWEAKS */
 	/* announcement board hiding */
@@ -141,6 +160,14 @@
 			background-repeat: no-repeat;
 		}
 	}
+	if altLogo == alternative2 {
+		a.logo {
+			background: url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/logo-alt2.png);
+			width: 510px;
+			height: 145px;
+			background-repeat: no-repeat;
+		}
+	}
 	if wideforum {
 		#brd-wrap {
 			max-width: 80%;
@@ -177,6 +204,27 @@
 			display: none;
 		}
 	}
+	if hideBadges {
+		a:after {
+			display: none;
+		}
+	}
+	if hideWidget {
+		#vk_community_messages {
+			display: none !important;		
+		}
+	}
+	if hidePlayerbtn {
+		.player-btn {
+			display: none;
+		}
+	}
+	if fixFonts {
+		* {
+			font-family: 'Arial', sans-serif !important;
+		}
+	}
+	
 	/* COLOR THEMES */
 	if colorTheme == original {
 		accentColor = default
@@ -529,6 +577,9 @@
 		overlayColor = none
 		boxShadow = none
 		
+		a.logo {
+			background-image: url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/logo-alt2.png);
+		}
 		.fancy_spoiler_switcher {
 			background: fontSpecialColor !important;
 			border-color: fontSpecialColor !important;
@@ -551,7 +602,13 @@
 			background-color: fontSpecialColor !important;
 			color: accentColor;
 		}
-		input[type="text"], input[type="password"], input[type="email"], input[type="url"], input[type="number"], input[type="search"], textarea {
+		input[type="text"],
+		input[type="password"],
+		input[type="email"],
+		input[type="url"],
+		input[type="number"],
+		input[type="search"],
+		textarea {
 			border-color: fontSpecialColor !important;
 			color: fontSpecialColor !important;
 		}
@@ -565,6 +622,25 @@
 			border: 0px !important;
 		}
 	}
+	/*if colorTheme == memes {
+		accentColor = #eb0007
+		borderColor = #c2c2c2
+		primaryColor = #fff
+		secondaryColor = #c7c7c7
+		fontColor = #000
+		fontSpecialColor = #eb0007
+		bgPlaceholder = url(https://raw.githubusercontent.com/vertexofvortex/MCDreloaded/master/images/bg-memes.png)
+		statusPlaceholder = default
+		quoteboxImg = default
+		codeboxImg = default
+		overlayColor = rgba(198, 198, 198, .1)
+		boxShadow = 0px 5px 5px 0px rgba(0, 0, 0, 0.1)
+		
+		body {
+			background-color: #5b1414 !important;
+			background-size: 7% !important;
+		}
+	}*/
 	
 	if newTheme {
 		body {
@@ -578,6 +654,10 @@
 		.js_link {
 			border-color: borderColor;
 			border-bottom: solid 1px;
+		}
+		.entry-content a:visited,
+ 		.entry-content a:visited:hover {
+			color: fontSpecialColor;
 		}
 		/* menu bar restyling */
 		#brd-navlinks {
@@ -602,7 +682,7 @@
 		/* announcement board restyling */
 		#brd-announcement {
 			border: borderColor 1px solid;
-			border-radius: 6px;
+			border-radius: borderRadius;
 			box-shadow: boxShadow;
 			background: secondaryColor;
 		}
@@ -627,7 +707,7 @@
 		}
 		/* main forums restyling */
 		.main-head {
-			border-radius: 6px 6px 0 0;
+			border-radius: borderRadius borderRadius 0 0;
 			border: 0px;
 			box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1) !important;
 			background: accentColor;
@@ -642,7 +722,7 @@
 		}
 		.main-category {
 			box-shadow: boxShadow;
-			border-radius: 0 0 6px 6px;
+			border-radius: 0 0 borderRadius borderRadius;
 			background: primaryColor;
 			border-color: borderColor;
 		}
@@ -652,8 +732,14 @@
 		.main-item * a {
 			color: fontSpecialColor;
 		}
+		.main-item .hn .item-status {
+			color: #0000;
+		}
 		.main-item .hn .item-status em {
-			color: fontSpecialColor !important;
+			color: fontColor !important;
+			background: secondaryColor;
+			padding: 2px;
+			border-radius: 2px;
 		}
 		li.info-topics,
 		li.info-topics strong,
@@ -667,7 +753,7 @@
 			color: fontColor;
 		}
 		#brd-stats {
-			border-radius: 6px 6px 0 0;
+			border-radius: borderRadius borderRadius 0 0;
 			box-shadow: boxShadow;
 			background: secondaryColor;
 			border-color: borderColor;
@@ -677,7 +763,7 @@
 			color: fontColor;
 		}
 		#brd-online {
-			border-radius: 0 0 6px 6px;
+			border-radius: 0 0 borderRadius borderRadius;
 			box-shadow: boxShadow;
 			background: primaryColor;
 			border-color: borderColor;
@@ -702,7 +788,7 @@
 		.main-foot {
 			box-shadow: boxShadow;
 			border-top: 1px solid borderColor;
-			border-radius: 6px;
+			border-radius: borderRadius;
 			margin-top: 6px;
 			background: primaryColor;
 			border-color: borderColor;
@@ -739,12 +825,12 @@
 			background: none;
 		}
 		.main-content {
-			border-radius: 0 0 6px 6px;
+			border-radius: 0 0 borderRadius borderRadius;
 			background: primaryColor;
 			border-color: borderColor;
 		}
 		#brd-qpost {
-			border-radius: 0 0 6px 6px;
+			border-radius: 0 0 borderRadius borderRadius;
 			box-shadow: boxShadow;
 			background: primaryColor;
 			color: fontColor;
@@ -806,7 +892,7 @@
 			background-image: quoteboxImg !important;
 			outline: none !important;
 			border: borderColor 1px solid !important;
-			border-radius: 6px;
+			border-radius: borderRadius;
 		}
 		.brd .entry-content .codebox {
 			background-color: secondaryColor !important;
@@ -816,7 +902,7 @@
 			border-right: 1px solid;
 			border-bottom: 1px solid;
 			border-color: borderColor;
-			border-radius: 6px;
+			border-radius: borderRadius;
 		}
 		.fancy_spoiler {
 			border-top: 1px borderColor solid !important;
@@ -849,10 +935,10 @@
 			color: accentColor;
 		}
 		.lastpost .postfoot .post-options {
-			border-radius: 0 0 6px 0;
+			border-radius: 0 0 borderRadius 0;
 		}
 		#topic-review {
-			border-radius: 0 0 6px 6px;
+			border-radius: 0 0 borderRadius borderRadius;
 		}
 		#pun_bbcode_buttons input {
 			border-radius: 1px*50% !important;
@@ -861,7 +947,7 @@
 			border-radius: 6px;
 		}
 		#post-form {
-			border-radius: 0 0px 6px 6px;	
+			border-radius: 0 0px borderRadius borderRadius;	
 		}
 		.frm-buttons {
 			border-color: borderColor;
@@ -870,22 +956,49 @@
 			border-color: borderColor;
 		}
 		.frm-buttons input {
-			border-radius: 1px*50% !important;
+			border-radius: 1px*50%;
 			padding-left: 12px;
 			padding-right: 12px;
 		}
 		.frm-buttons input span {
 			padding-right: 12px;
 		}
-		textarea,
-		input[type="text"],
-		input:not([title]) {
-			border-radius: 6px;
-			background: secondaryColor !important;
-			box-shadow: none!important;
-			border-color: borderColor;
+		.frm-buttons input {
+			background: secondaryColor;
+			border-color: fontSpecialColor;
 			color: fontColor;
 		}
+		.frm-buttons input:hover {
+			border-color: fontSpecialColor;
+			background: fontSpecialColor;
+			color: primaryColor;
+		}
+		input[name="submit_button"],
+		input[name="pm_send"] {
+			background: accentColor;
+			border-color: fontSpecialColor;
+		}
+		input[name="submit_button"]:hover,
+		input[name="pm_send"]:hover,
+ 		input[name="submit_button"]:focus,
+		input[name="pm_send"]:focus {
+			background: fontSpecialColor;
+			border-color: fontSpecialColor !important;
+			color: primaryColor !important;
+		}
+		input[type="text"],
+		input[type="password"],
+		input[type="email"],
+		input[type="url"],
+		input[type="number"],
+		input[type="search"],
+ 		textarea {
+			border-color: borderColor;
+			background: secondaryColor;
+			border-radius: borderRadius;
+			box-shadow: none;
+			color: fontColor;
+		}	
 		input[type="text"]:active,
 		input[type="text"]:focus,
 		input[type="password"]:active,
@@ -900,21 +1013,28 @@
 		input[type="number"]:focus,
 		textarea:active,
 		textarea:focus {
-			border-color: borderColor;
+			border-color: accentColor;
+			background: secondaryColor;
+			box-shadow: none;
 		}
 		.main-menu {
-			border-radius: 6px 6px 0 0;
+			border-radius: borderRadius borderRadius 0 0;
 			border: 0;
 		}
 		#pun_bbcode_bar input[type=button].image,
-		#pun_bbcode_bar #pun_bbcode_button_smiles.image
+		#pun_bbcode_bar #pun_bbcode_button_smiles.image,
 		#pun_bbcode_bar #pun_bbcode_button_fancy_spoiler.image {
 			background-color: secondaryColor;
 			border-color: borderColor;
 		}
+		#pun_bbcode_bar input[type=button].image:hover,
+		#pun_bbcode_bar #pun_bbcode_button_smiles.image:hover,
+		#pun_bbcode_bar #pun_bbcode_button_fancy_spoiler.image:hover {
+			border-color: accentColor;
+		}
 		.main-content,
 		.main-topic .lastpost {
-			border-radius: 0 0 6px 6px !important;
+			border-radius: 0 0 borderRadius borderRadius !important;
 		}
 		
 		/* user profile */
